@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animales vertebrados · 3° básico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--bg:#FFF6E6;--ink:#14213D;--card:#FFFFFF;--line:#EADCC2;--ok:#2FA36B;--bad:#D9413B;--navy:#14213D}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Baloo 2","Atkinson Hyperlegible",system-ui,sans-serif;display:flex;flex-direction:column}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:4px solid #3A78E0;outline-offset:3px}
+header{display:flex;align-items:center;gap:14px;padding:16px 20px;flex-wrap:wrap}
+.tit{display:flex;flex-direction:column;line-height:1.1;margin-right:auto}
+.tit small{font-size:15px;font-weight:600;color:#8A6A30;letter-spacing:.04em}
+.tit b{font-size:clamp(22px,3vw,32px);font-weight:800}
+.pill{background:#fff;border:0;border-radius:14px;padding:8px 14px;font-size:18px;font-weight:800;box-shadow:0 3px 0 var(--line);display:flex;align-items:center;gap:8px;color:var(--ink)}
+.pill[aria-pressed="false"]{opacity:.55}
+.score{background:var(--navy);color:#fff;box-shadow:none}
+main{flex:1;display:flex;flex-direction:column;gap:16px;padding:0 20px 20px;min-height:0}
+.instr{font-size:clamp(18px,2.2vw,24px);margin:0}
+.tray{display:flex;flex-wrap:wrap;gap:12px;min-height:110px;align-content:flex-start}
+.animal{background:var(--card);border:3px solid transparent;border-radius:20px;padding:8px 16px 8px 10px;display:flex;align-items:center;gap:8px;font-size:clamp(18px,2vw,24px);font-weight:800;box-shadow:0 4px 0 var(--line);color:var(--ink);touch-action:manipulation}
+.animal .em{font-size:clamp(34px,4vw,48px);line-height:1}
+.animal.sel{border-color:#3A78E0;transform:translateY(-3px);box-shadow:0 8px 0 #BFD3F5}
+.animal.shake{animation:shake .4s;border-color:var(--bad)}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.boxes{flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;min-height:0}
+.box{border:0;border-radius:24px;padding:14px;display:flex;flex-direction:column;align-items:stretch;gap:8px;color:#fff;text-align:left;min-height:180px}
+.box h2{margin:0;font-size:clamp(22px,2.4vw,30px);font-weight:800}
+.box p{margin:0;font-size:15px;opacity:.9;font-family:"Atkinson Hyperlegible",sans-serif}
+.box .in{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.box .in span{background:rgba(255,255,255,.92);color:var(--ink);border-radius:12px;padding:2px 10px 2px 6px;font-size:16px;font-weight:800;display:flex;align-items:center;gap:4px}
+.box .in span i{font-style:normal;font-size:26px}
+.box.target{outline:5px dashed rgba(20,33,61,.35);outline-offset:3px}
+.fin{position:fixed;inset:0;background:rgba(20,33,61,.6);display:flex;align-items:center;justify-content:center;padding:20px}
+.fin div{background:#fff;border-radius:28px;padding:36px;text-align:center;max-width:460px;width:100%}
+.fin h2{font-size:40px;margin:0}
+.fin p{font-size:22px;margin:8px 0 22px}
+.big{background:var(--navy);color:#fff;border:0;border-radius:18px;padding:14px 28px;font-size:22px;font-weight:800}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.animal.shake{animation:none}.animal.sel{transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="tit"><small>CIENCIAS NATURALES · 3° BÁSICO</small><b>Animales vertebrados</b></div>
+  <button class="pill" id="leer" type="button" aria-label="Escuchar la instrucción">🔊 Escuchar</button>
+  <button class="pill" id="sonido" type="button" aria-pressed="true">Sonidos</button>
+  <button class="pill" id="pantalla" type="button">Pantalla completa</button>
+  <span class="pill score" id="score" aria-live="polite">0 / 10</span>
+</header>
+<main>
+  <p class="instr" id="instr">Toca un animal y después toca el grupo al que pertenece.</p>
+  <div class="tray" id="tray" aria-label="Animales por clasificar"></div>
+  <div class="boxes" id="boxes"></div>
+</main>
+<div class="fin" id="fin" hidden>
+  <div>
+    <h2>¡Terminaste!</h2>
+    <p id="finTxt"></p>
+    <button class="big" id="otra" type="button">Jugar de nuevo</button>
+  </div>
+</div>
+<script>
+// Actividad de ejemplo para Aula Interactiva · Colegio Cordillera
+const GRUPOS = [
+  {id:"mam", n:"Mamíferos", d:"Tienen pelo y toman leche", c:"#3A78E0", u:"un mamífero"},
+  {id:"ave", n:"Aves", d:"Tienen plumas y pico", c:"#2FA36B", u:"un ave"},
+  {id:"rep", n:"Reptiles", d:"Tienen escamas secas", c:"#E38A1C", u:"un reptil"},
+  {id:"anf", n:"Anfibios", d:"Piel húmeda, viven en agua y tierra", c:"#7A5BC7", u:"un anfibio"},
+  {id:"pez", n:"Peces", d:"Tienen aletas y branquias", c:"#D9413B", u:"un pez"}
+];
+const ANIMALES = [
+  {n:"Perro", e:"🐕", g:"mam"}, {n:"Vaca", e:"🐄", g:"mam"},
+  {n:"Águila", e:"🦅", g:"ave"}, {n:"Pingüino", e:"🐧", g:"ave"},
+  {n:"Tortuga", e:"🐢", g:"rep"}, {n:"Lagarto", e:"🦎", g:"rep"},
+  {n:"Rana", e:"🐸", g:"anf"}, {n:"Salamandra", e:"🦎", g:"anf"},
+  {n:"Tiburón", e:"🦈", g:"pez"}, {n:"Pez payaso", e:"🐠", g:"pez"}
+];
+const $ = s => document.querySelector(s);
+let sel = null, ok = 0, errores = 0, sonido = true, colocados = {};
+
+function hablar(t){ try{ speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = "es-CL"; u.rate = .95; speechSynthesis.speak(u); }catch(e){} }
+let ac;
+function tono(bien){
+  if(!sonido) return;
+  try{
+    ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+    const notas = bien ? [523,659,784] : [220,180];
+    notas.forEach((f,i)=>{ const o=ac.createOscillator(), g=ac.createGain(); o.frequency.value=f; o.type="triangle";
+      g.gain.setValueAtTime(.18, ac.currentTime+i*.09); g.gain.exponentialRampToValueAtTime(.001, ac.currentTime+i*.09+.25);
+      o.connect(g).connect(ac.destination); o.start(ac.currentTime+i*.09); o.stop(ac.currentTime+i*.09+.26); });
+  }catch(e){}
+}
+function mezclar(a){ return a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]); }
+
+function pintar(){
+  $("#tray").innerHTML = "";
+  mezclar(ANIMALES.filter(a=>!colocados[a.n])).forEach(a=>{
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "animal" + (sel===a ? " sel" : "");
+    b.innerHTML = `<span class="em" aria-hidden="true">${a.e}</span>${a.n}`;
+    b.onclick = () => { sel = a; hablar(a.n); document.querySelectorAll(".animal").forEach(x=>x.classList.remove("sel")); b.classList.add("sel"); marcarCajas(); };
+    a.el = b; $("#tray").appendChild(b);
+  });
+  $("#boxes").innerHTML = "";
+  GRUPOS.forEach(g=>{
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "box"; b.style.background = g.c;
+    const dentro = ANIMALES.filter(a=>colocados[a.n]===g.id).map(a=>`<span><i aria-hidden="true">${a.e}</i>${a.n}</span>`).join("");
+    b.innerHTML = `<h2>${g.n}</h2><p>${g.d}</p><div class="in">${dentro}</div>`;
+    b.onclick = () => colocar(g);
+    $("#boxes").appendChild(b);
+  });
+  marcarCajas();
+  $("#score").textContent = ok + " / " + ANIMALES.length;
+}
+function marcarCajas(){ document.querySelectorAll(".box").forEach(b=>b.classList.toggle("target", !!sel)); }
+
+function colocar(g){
+  if(!sel){ hablar("Primero toca un animal"); return; }
+  if(sel.g === g.id){
+    colocados[sel.n] = g.id; ok++; tono(true); hablar("¡Muy bien! " + sel.n + " es " + g.u);
+    sel = null; pintar();
+    if(ok === ANIMALES.length) terminar();
+  } else {
+    errores++; tono(false); hablar("Intenta otra vez");
+    const el = sel.el; el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake");
+  }
+}
+function terminar(){
+  const total = ANIMALES.length;
+  $("#finTxt").textContent = `Clasificaste los ${total} animales con ${errores === 0 ? "ningún error. ¡Perfecto!" : errores + (errores === 1 ? " error." : " errores.")}`;
+  $("#fin").hidden = false; hablar("¡Terminaste! " + $("#finTxt").textContent);
+  // Convención Aula Interactiva: informar el resultado a la plataforma, si la actividad está dentro de ella.
+  try{ window.parent.postMessage({tipo:"aula-resultado", actividad:"vertebrados-3basico", puntaje: Math.max(0, total - errores), total}, "*"); }catch(e){}
+}
+$("#leer").onclick = () => hablar($("#instr").textContent);
+$("#sonido").onclick = e => { sonido = !sonido; e.currentTarget.setAttribute("aria-pressed", sonido); };
+$("#pantalla").onclick = () => { try{ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }catch(e){} };
+$("#otra").onclick = () => { ok = 0; errores = 0; sel = null; colocados = {}; $("#fin").hidden = true; pintar(); };
+pintar();
+</script>
+</body>
+</html>

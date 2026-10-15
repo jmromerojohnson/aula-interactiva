@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Aula Interactiva · Explorar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FA;color:#111C30;font-family:'Atkinson Hyperlegible',system-ui,sans-serif}
+a{color:#2C6BD3}a:hover{color:#1C4E9E}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;margin:0}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F4F6FA; font-size: 16px; line-height: 1.55">
+
+<header style="background: #10264A; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none">
+<span style="width: 38px; height: 38px; border-radius: 10px; background: #FFFFFF; color: #10264A; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20l7-12 4 6 3-4 6 10z"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 18px">Aula Interactiva</span><span style="font-size: 12px; color: #B5C3DB; letter-spacing: 0.06em">PRIMER CICLO · CORDILLERA</span></span>
+</a>
+<nav aria-label="Principal" style="display: flex; gap: 4px; flex-wrap: wrap">
+<a href="Main.dc.html" style="color: #C9D5E8; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-size: 15px">Inicio</a>
+<a href="Catalogo.dc.html" style="color: #FFFFFF; text-decoration: none; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,0.10); font-size: 15px">Explorar</a>
+<a href="Catalogo.dc.html" style="color: #C9D5E8; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-size: 15px">Mis actividades</a>
+<a href="Main.dc.html#aprende" style="color: #C9D5E8; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-size: 15px">Aprende a crear</a>
+</nav>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+<a href="Catalogo.dc.html" style="display: flex; align-items: center; gap: 8px; color: #FFFFFF; text-decoration: none; font-size: 14px; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.22)">Revisión <span style="background: #E8A83A; color: #10264A; font-weight: 700; border-radius: 999px; padding: 0 8px; font-size: 13px">3</span></a>
+<a href="Catalogo.dc.html" style="display: flex; align-items: center; gap: 8px; background: #FFFFFF; color: #10264A; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 999px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>Subir actividad</a>
+<span aria-label="José Miguel" style="width: 38px; height: 38px; border-radius: 50%; background: #2C6BD3; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px">JM</span>
+</div>
+</div>
+</header>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 36px 24px 72px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap">
+<div>
+<h1 style="font-size: 40px; font-weight: 800">Explorar</h1>
+<p style="margin: 6px 0 0; color: #556178">Plantillas listas, recursos del ciclo y tus propias actividades.</p>
+</div>
+<label for="q" style="flex: 0 1 420px; min-width: 0; display: flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #DCE2EC; border-radius: 12px; padding: 4px 14px; color: #556178"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input id="q" type="search" placeholder="Buscar por tema, asignatura o tipo" style="flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; color: #111C30; padding: 10px 0"></label>
+</div>
+
+<div role="toolbar" aria-label="Origen" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 26px; padding-bottom: 18px; border-bottom: 1px solid #DCE2EC">
+<sc-for list="{{origenes}}" as="o" hint-placeholder-count="4">
+<button type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.style}}">{{o.label}} <span style="opacity: 0.65; font-weight: 400">{{o.count}}</span></button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 28px">
+<aside aria-label="Filtros" style="flex: 1 1 220px; max-width: 260px; display: flex; flex-direction: column; gap: 26px">
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="font-size: 12px; letter-spacing: 0.1em; font-weight: 700; color: #556178; margin-bottom: 10px">TIPO</legend>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 15px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #10264A">Actividades proyectables</label>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 15px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #10264A">Guías imprimibles</label>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 15px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #10264A">Evaluaciones</label>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 15px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #10264A">Hechas con Claude</label>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="asig" style="font-size: 12px; letter-spacing: 0.1em; font-weight: 700; color: #556178">ASIGNATURA</label>
+<select id="asig" style="font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid #DCE2EC; background: #FFFFFF; color: #111C30"><option>Todas</option><option>Lenguaje</option><option>Matemática</option><option>Ciencias Naturales</option><option>Historia</option><option>Religión</option><option>Inglés</option></select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; letter-spacing: 0.1em; font-weight: 700; color: #556178">NIVEL</span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<button type="button" style="font: inherit; font-weight: 700; padding: 10px 0; border-radius: 10px; border: 1px solid #10264A; background: #10264A; color: #FFFFFF">1°</button>
+<button type="button" style="font: inherit; font-weight: 700; padding: 10px 0; border-radius: 10px; border: 1px solid #DCE2EC; background: #FFFFFF; color: #111C30">2°</button>
+<button type="button" style="font: inherit; font-weight: 700; padding: 10px 0; border-radius: 10px; border: 1px solid #DCE2EC; background: #FFFFFF; color: #111C30">3°</button>
+<button type="button" style="font: inherit; font-weight: 700; padding: 10px 0; border-radius: 10px; border: 1px solid #DCE2EC; background: #FFFFFF; color: #111C30">4°</button>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DCE2EC; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<strong style="font-size: 15px">¿No encuentras lo que buscas?</strong>
+<span style="color: #556178; font-size: 14px">Créalo con Claude usando el kit y súbelo.</span>
+<a href="Main.dc.html#aprende" style="font-weight: 700; font-size: 14px">Ver cómo →</a>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px">
+<span style="color: #556178; font-size: 15px">{{resumen}}</span>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #556178">Ordenar por <select style="font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid #DCE2EC; background: #FFFFFF; color: #111C30"><option>Más usadas</option><option>Más recientes</option></select></label>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="6">
+<a href="Proyeccion.dc.html" style="text-decoration: none; color: #111C30; background: #FFFFFF; border: 1px solid #DCE2EC; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+<div style="{{it.thumbStyle}}">
+<span style="position: absolute; top: 10px; left: 10px; background: #FFFFFF; color: #111C30; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 6px">{{it.badge}}</span>
+<sc-if value="{{it.enRevision}}" hint-placeholder-val="{{false}}"><span style="position: absolute; top: 10px; right: 10px; background: #FFF1D6; color: #6A4A10; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px">En revisión</span></sc-if>
+<sc-if value="{{it.isQuiz}}" hint-placeholder-val="{{true}}"><div style="width: 70%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px"><span style="grid-column: 1 / 3; height: 14px; border-radius: 4px; background: #C2373B; opacity: 0.75"></span><span style="height: 26px; border-radius: 6px; background: #FFFFFF; border: 2px solid #DCE2EC"></span><span style="height: 26px; border-radius: 6px; background: #E3F1E9; border: 2px solid #23804F"></span><span style="height: 26px; border-radius: 6px; background: #FFFFFF; border: 2px solid #DCE2EC"></span><span style="height: 26px; border-radius: 6px; background: #FFFFFF; border: 2px solid #DCE2EC"></span></div></sc-if>
+<sc-if value="{{it.isRuleta}}" hint-placeholder-val="{{false}}"><div style="width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(#23804F 0 25%, #2C6BD3 0 50%, #E8A83A 0 75%, #C2373B 0); box-shadow: 0 0 0 6px #FFFFFF"></div></sc-if>
+<sc-if value="{{it.isMemo}}" hint-placeholder-val="{{false}}"><div style="display: grid; grid-template-columns: repeat(4, 30px); gap: 6px"><span style="height: 38px; border-radius: 6px; background: #23804F"></span><span style="height: 38px; border-radius: 6px; background: #FFFFFF; border: 2px solid #23804F; color: #23804F; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center">ma</span><span style="height: 38px; border-radius: 6px; background: #23804F"></span><span style="height: 38px; border-radius: 6px; background: #23804F"></span><span style="height: 38px; border-radius: 6px; background: #23804F"></span><span style="height: 38px; border-radius: 6px; background: #23804F"></span><span style="height: 38px; border-radius: 6px; background: #FFFFFF; border: 2px solid #23804F; color: #23804F; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center">ma</span><span style="height: 38px; border-radius: 6px; background: #23804F"></span></div></sc-if>
+<sc-if value="{{it.isGuia}}" hint-placeholder-val="{{false}}"><div style="width: 96px; height: 120px; background: #FFFFFF; border-radius: 4px; box-shadow: 0 8px 20px rgba(17,28,48,0.12); padding: 10px; display: flex; flex-direction: column; gap: 6px; box-sizing: border-box"><span style="height: 8px; width: 70%; border-radius: 4px; background: #2C6BD3"></span><span style="height: 30px; border-radius: 4px; background: #E4EDFB"></span><span style="height: 5px; border-radius: 3px; background: #DCE2EC"></span><span style="height: 5px; border-radius: 3px; background: #DCE2EC"></span><span style="height: 5px; width: 60%; border-radius: 3px; background: #DCE2EC"></span></div></sc-if>
+<sc-if value="{{it.isHtml}}" hint-placeholder-val="{{false}}"><div style="width: 150px; height: 92px; background: #FFFFFF; border-radius: 10px; box-shadow: 0 8px 20px rgba(17,28,48,0.12); display: flex; flex-direction: column; overflow: hidden"><span style="height: 16px; background: #6B54C6; opacity: 0.85"></span><span style="flex: 1; display: flex; align-items: center; justify-content: center; color: #6B54C6"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"></path></svg></span></div></sc-if>
+<sc-if value="{{it.isTimer}}" hint-placeholder-val="{{false}}"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 44px; color: #8A5F14; letter-spacing: -0.02em">04:59</div></sc-if>
+</div>
+<div style="padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1">
+<h3 style="font-size: 18px; font-weight: 700">{{it.t}}</h3>
+<span style="color: #556178; font-size: 14px">{{it.meta}}</span>
+<span style="margin-top: auto; padding-top: 10px; font-size: 13px; color: #556178; display: flex; align-items: center; gap: 8px"><span style="{{it.avatarStyle}}">{{it.ini}}</span>{{it.autor}}</span>
+</div>
+</a>
+</sc-for>
+</div>
+</main>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+renderVals() {
+var origen = (this.state && this.state.origen) || 'todas';
+var thumb = function (bg) { return 'height: 150px; background: ' + bg + '; display: flex; align-items: center; justify-content: center; position: relative'; };
+var avatar = function (bg, fg) { return 'width: 24px; height: 24px; border-radius: 50%; background: ' + bg + '; color: ' + fg + '; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center'; };
+var base = { isQuiz: false, isRuleta: false, isMemo: false, isGuia: false, isHtml: false, isTimer: false, enRevision: false };
+var mk = function (o) { var r = {}; for (var k in base) r[k] = base[k]; for (var j in o) r[j] = o[j]; return r; };
+var all = [
+mk({ origen: 'plantilla', isQuiz: true, badge: 'QUIZ', t: 'Quiz de alternativas', meta: 'Plantilla · todas las asignaturas', thumbStyle: thumb('#FAE7E7'), ini: 'AI', autor: 'Plantilla Aula Interactiva', avatarStyle: avatar('#10264A', '#FFFFFF') }),
+mk({ origen: 'plantilla', isRuleta: true, badge: 'RULETA', t: 'Ruleta de preguntas', meta: 'Plantilla · todas las asignaturas', thumbStyle: thumb('#E3F1E9'), ini: 'AI', autor: 'Plantilla Aula Interactiva', avatarStyle: avatar('#10264A', '#FFFFFF') }),
+mk({ origen: 'plantilla', isGuia: true, badge: 'GUÍA', t: 'Comprensión lectora', meta: 'Plantilla · Lenguaje · PDF y Docs', thumbStyle: thumb('#E4EDFB'), ini: 'AI', autor: 'Plantilla Aula Interactiva', avatarStyle: avatar('#10264A', '#FFFFFF') }),
+mk({ origen: 'banco', isQuiz: true, badge: 'QUIZ', t: 'Sumas hasta 20', meta: 'Matemática · 1° básico · 10 preguntas', thumbStyle: thumb('#FAE7E7'), ini: 'CM', autor: 'Prof. C. Muñoz', avatarStyle: avatar('#E4EDFB', '#2C6BD3') }),
+mk({ origen: 'banco', isHtml: true, badge: 'HECHA CON CLAUDE', t: 'Las partes de la planta', meta: 'Ciencias · 3° básico · arrastrar y ordenar', thumbStyle: thumb('#EDE9F8'), ini: 'AR', autor: 'Prof. A. Rojas', avatarStyle: avatar('#E3F1E9', '#23804F') }),
+mk({ origen: 'banco', isMemo: true, badge: 'MEMORICE', t: 'Sílabas ma, me, mi, mo, mu', meta: 'Lenguaje · 1° básico · 8 pares', thumbStyle: thumb('#E3F1E9'), ini: 'PV', autor: 'Prof. P. Vargas', avatarStyle: avatar('#FAE7E7', '#C2373B') }),
+mk({ origen: 'plantilla', isTimer: true, badge: 'DINÁMICA', t: 'Temporizador visual', meta: 'Plantilla · para proyectar', thumbStyle: thumb('#F6EEDC'), ini: 'AI', autor: 'Plantilla Aula Interactiva', avatarStyle: avatar('#10264A', '#FFFFFF') }),
+mk({ origen: 'mias', isRuleta: true, badge: 'RULETA', t: 'Repaso: los sacramentos', meta: 'Religión · 4° básico · 12 preguntas', thumbStyle: thumb('#E3F1E9'), ini: 'JM', autor: 'José Miguel · compartida', avatarStyle: avatar('#10264A', '#FFFFFF') }),
+mk({ origen: 'mias', isHtml: true, enRevision: true, badge: 'HECHA CON CLAUDE', t: 'Animales vertebrados', meta: 'Ciencias · 3° básico · clasificar', thumbStyle: thumb('#EDE9F8'), ini: 'JM', autor: 'José Miguel', avatarStyle: avatar('#10264A', '#FFFFFF') })
+];
+var self = this;
+var defs = [['todas', 'Todo'], ['plantilla', 'Plantillas'], ['banco', 'Banco del ciclo'], ['mias', 'Mis actividades']];
+var origenes = defs.map(function (d) {
+var on = d[0] === origen;
+var n = d[0] === 'todas' ? all.length : all.filter(function (x) { return x.origen === d[0]; }).length;
+return { label: d[1], count: String(n), pressed: on ? 'true' : 'false', pick: function () { self.setState({ origen: d[0] }); },
+style: 'font: inherit; font-weight: 700; font-size: 15px; padding: 9px 16px; border-radius: 999px; cursor: pointer; ' + (on ? 'background: #10264A; color: #FFFFFF; border: 1px solid #10264A' : 'background: #FFFFFF; color: #111C30; border: 1px solid #DCE2EC') };
+});
+var items = origen === 'todas' ? all : all.filter(function (x) { return x.origen === origen; });
+return { origenes: origenes, items: items, resumen: items.length + (items.length === 1 ? ' resultado' : ' resultados') };
+}
+}
+</script>
+</body>
+</html>
