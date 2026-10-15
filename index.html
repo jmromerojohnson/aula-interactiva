@@ -2,419 +2,177 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
-<title>Aula Interactiva Cordillera</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula Interactiva · Primer Ciclo Cordillera</title>
+<meta name="description" content="Actividades, guías y evaluaciones del Primer Ciclo del Colegio Cordillera para proyectar en la sala.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
-<style>
-/* Layout: sitio de una página — nav fija, portada con vista previa proyectada, pasos, destacada, catálogo filtrable con miniaturas vivas, CTA crear prueba, pie */
-:root{
-  --bg:#f4f6fa; --surface:#ffffff; --sunk:#eaeef5; --ink:#121d31; --muted:#58657c; --line:#dce2ec;
-  --navy:#112a52; --navy-2:#1b3a6e; --on-navy:#ffffff; --on-navy-muted:#b8c6de; --accent:#2f6fd6;
-  --c-juegos:#2a8a55; --c-pres:#2f6fd6; --c-pruebas:#c63a3e; --c-din:#b5832a;
-  --t-juegos:#e3f2ea; --t-pres:#e5eefc; --t-pruebas:#fbe8e8; --t-din:#f7efdc;
-  --shadow:0 1px 2px rgba(17,42,82,.06),0 10px 30px rgba(17,42,82,.08);
-  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
-  --f-body:"Atkinson Hyperlegible",ui-sans-serif,system-ui,sans-serif;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0c1320; --surface:#152033; --sunk:#101a2a; --ink:#e9eef7; --muted:#9caac0; --line:#24324a;
-  --navy:#0a1b38; --navy-2:#13294d; --on-navy:#ffffff; --on-navy-muted:#9fb1d0; --accent:#6c9cf0;
-  --c-juegos:#4cbf82; --c-pres:#6c9cf0; --c-pruebas:#ec6d70; --c-din:#e0b25b;
-  --t-juegos:#15302a; --t-pres:#162a49; --t-pruebas:#3a1d24; --t-din:#33291b;
-  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.25); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0c1320; --surface:#152033; --sunk:#101a2a; --ink:#e9eef7; --muted:#9caac0; --line:#24324a;
-  --navy:#0a1b38; --navy-2:#13294d; --on-navy:#ffffff; --on-navy-muted:#9fb1d0; --accent:#6c9cf0;
-  --c-juegos:#4cbf82; --c-pres:#6c9cf0; --c-pruebas:#ec6d70; --c-din:#e0b25b;
-  --t-juegos:#15302a; --t-pres:#162a49; --t-pruebas:#3a1d24; --t-din:#33291b;
-  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.25); color-scheme:dark}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
-.wrap{max-width:1160px;margin:0 auto;padding-inline:20px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
-a{color:inherit}
-button{font:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
-.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent)}
-
-/* NAV */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--navy);color:var(--on-navy);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav .wrap{display:flex;align-items:center;gap:20px;height:62px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-weight:700;font-size:1.05rem;white-space:nowrap}
-.logo .mk{width:32px;height:32px;border-radius:9px;background:var(--on-navy);color:var(--navy);display:grid;place-items:center}
-.logo small{display:block;font:400 .7rem var(--f-body);color:var(--on-navy-muted);letter-spacing:.06em;text-transform:uppercase}
-.links{display:flex;gap:4px;margin-left:auto}
-.links a{text-decoration:none;padding:8px 12px;border-radius:8px;color:var(--on-navy-muted);font-size:.92rem}
-.links a:hover{color:var(--on-navy);background:rgba(255,255,255,.08)}
-.nav .cta{background:var(--on-navy);color:var(--navy);border:0;border-radius:999px;padding:9px 16px;font-weight:700;font-size:.9rem;cursor:pointer;white-space:nowrap}
-@media (max-width:820px){.links{display:none}.nav .cta{margin-left:auto}}
-
-/* HERO */
-.hero{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(600px 300px at 85% 10%,rgba(108,156,240,.28),transparent 70%),
-  radial-gradient(500px 280px at 0% 100%,rgba(76,191,130,.16),transparent 70%)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:56px 72px}
-.hero h1{font-weight:800;font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.02;letter-spacing:-.01em}
-.hero h1 em{font-style:normal;background:linear-gradient(90deg,#8fd3ae,#8db6f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lede{color:var(--on-navy-muted);font-size:1.08rem;max-width:46ch;margin:18px 0 26px}
-.hsearch{display:flex;gap:8px;background:var(--surface);border-radius:14px;padding:6px;box-shadow:0 12px 40px rgba(0,0,0,.25);max-width:520px}
-.hsearch label{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding-left:10px;color:var(--muted)}
-.hsearch input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;outline:none;padding:10px 0}
-.hsearch button{border:0;border-radius:10px;background:var(--navy);color:var(--on-navy);padding:0 18px;font-weight:700;cursor:pointer}
-.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:.85rem;color:var(--on-navy-muted)}
-.quick button{border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--on-navy);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:.85rem}
-.quick button:hover{background:rgba(255,255,255,.1)}
-.stats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
-.stats b{display:block;font-family:var(--f-display);font-size:1.6rem;font-variant-numeric:tabular-nums}
-.stats span{font-size:.8rem;color:var(--on-navy-muted)}
-
-/* projector mockup */
-.screen{background:var(--surface);color:var(--ink);border-radius:16px;box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden;transform:rotate(1.2deg)}
-.screen .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--sunk);border-bottom:1px solid var(--line);font-size:.75rem;color:var(--muted)}
-.screen .bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
-.screen .bar span{margin-left:8px}
-.screen .body{padding:22px}
-.qhead{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted);margin-bottom:12px}
-.qprog{height:6px;border-radius:3px;background:var(--sunk);margin-bottom:18px;overflow:hidden}
-.qprog div{height:100%;width:60%;background:var(--c-pruebas);border-radius:3px}
-.qtext{font-family:var(--f-display);font-weight:700;font-size:1.35rem;line-height:1.2;margin-bottom:16px}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.opt{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;border:2px solid var(--line);font-weight:700;background:var(--surface);color:var(--ink);cursor:pointer;text-align:left}
-.opt .l{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#fff;flex:none;font-size:.85rem}
-.opt.ok{border-color:var(--c-juegos);background:var(--t-juegos)}
-.opt.bad{border-color:var(--c-pruebas);background:var(--t-pruebas)}
-.qfoot{margin-top:14px;font-size:.85rem;color:var(--muted);min-height:1.4em}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-block:40px 56px}.screen{transform:none}}
-
-/* STEPS */
-.steps{padding-block:64px 24px}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
-.sec-head h2{font-weight:700;font-size:clamp(1.5rem,3.4vw,2.1rem);margin-top:6px}
-.sec-head p{color:var(--muted);margin:0;max-width:44ch}
-.steps ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
-.steps li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;counter-increment:s;min-width:0}
-.steps li::before{content:"Paso " counter(s);display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent);background:var(--t-pres);padding:3px 9px;border-radius:6px;margin-bottom:12px}
-.steps h3{font-size:1.15rem;font-weight:700;margin-bottom:6px}
-.steps li p{margin:0;color:var(--muted);font-size:.95rem}
-@media (max-width:760px){.steps ol{grid-template-columns:1fr}}
-
-/* CATALOG */
-.catalog{padding-block:48px 24px}
-.toolbar{position:sticky;top:calc(62px + env(safe-area-inset-top,0px));z-index:20;background:var(--bg);padding-block:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:22px}
-.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font-weight:700;font-size:.88rem;cursor:pointer}
-.chip .dot{width:9px;height:9px;border-radius:50%}
-.chip .n{font-weight:400;opacity:.65;font-variant-numeric:tabular-nums}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.mini-search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;color:var(--muted);min-width:0;flex:0 1 260px}
-.mini-search input{border:0;background:transparent;color:var(--ink);font:inherit;outline:none;min-width:0;width:100%;font-size:.92rem}
-@media (max-width:600px){.mini-search{flex:1 1 100%}}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.card{display:flex;flex-direction:column;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;color:var(--ink);padding:0;transition:transform .18s,box-shadow .18s}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.thumb{height:150px;display:grid;place-items:center;position:relative;overflow:hidden}
-.thumb .badge{position:absolute;top:10px;left:10px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);color:var(--ink);padding:3px 8px;border-radius:6px}
-.thumb .new{left:auto;right:10px;background:var(--ink);color:var(--bg)}
-.cbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
-.cbody h3{font-size:1.1rem;font-weight:700}
-.cbody p{margin:0;color:var(--muted);font-size:.92rem}
-.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
-.tag{font-size:.74rem;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--muted)}
-.empty{padding:50px 0;text-align:center;color:var(--muted)}
-
-/* mini previews */
-.p-wheel{width:104px;height:104px;border-radius:50%;background:conic-gradient(var(--c-juegos) 0 25%,var(--c-pres) 0 50%,var(--c-din) 0 75%,var(--c-pruebas) 0);box-shadow:0 0 0 6px var(--surface);position:relative}
-.p-wheel::after{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%);border:9px solid transparent;border-top:14px solid var(--ink)}
-.p-mem{display:grid;grid-template-columns:repeat(4,30px);gap:6px}
-.p-mem i{height:38px;border-radius:6px;background:var(--c-juegos);opacity:.9}
-.p-mem i.f{background:var(--surface);border:2px solid var(--c-juegos);display:grid;place-items:center;font:700 .8rem var(--f-display);color:var(--c-juegos);font-style:normal}
-.p-drag{display:flex;flex-direction:column;gap:6px;width:70%}
-.p-drag i{height:20px;border-radius:6px;background:var(--surface);border:2px solid var(--c-juegos);font-style:normal;font-size:.7rem;padding-left:8px;line-height:16px;color:var(--ink)}
-.p-drag i.m{transform:translateX(14px) rotate(-2deg);box-shadow:var(--shadow)}
-.p-sopa{display:grid;grid-template-columns:repeat(7,16px);gap:3px;font:700 .72rem var(--f-display);color:var(--ink);text-align:center}
-.p-sopa b{background:var(--c-juegos);color:#fff;border-radius:3px}
-.p-slide{width:150px;height:90px;border-radius:8px;background:var(--surface);box-shadow:var(--shadow);padding:10px;display:flex;flex-direction:column;gap:6px}
-.p-slide i{display:block;height:8px;border-radius:4px;background:var(--line)}
-.p-slide i.h{height:12px;width:70%;background:var(--c-pres)}
-.p-book{display:flex}.p-book i{width:64px;height:84px;background:var(--surface);box-shadow:var(--shadow);border-radius:4px 0 0 4px;padding:8px;display:flex;flex-direction:column;gap:5px}
-.p-book i+i{border-radius:0 4px 4px 0}.p-book i b{height:5px;border-radius:3px;background:var(--line);display:block}.p-book i b.c{height:30px;background:var(--c-pres);opacity:.5}
-.p-line{position:relative;width:78%;height:4px;background:var(--c-pres);border-radius:2px}
-.p-line i{position:absolute;top:-6px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--c-pres)}
-.p-quiz{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:70%}
-.p-quiz i{height:26px;border-radius:6px;background:var(--surface);border:2px solid var(--line)}
-.p-quiz i.ok{border-color:var(--c-juegos);background:var(--t-juegos)}
-.p-quiz i.q{grid-column:1/3;height:14px;border:0;background:var(--c-pruebas);opacity:.75}
-.p-vf{display:flex;gap:10px}.p-vf i{width:62px;height:62px;border-radius:14px;display:grid;place-items:center;font:800 1.5rem var(--f-display);color:#fff;font-style:normal}
-.p-ticket{width:150px;height:76px;background:var(--surface);border-radius:8px;box-shadow:var(--shadow);border-left:6px dashed var(--c-pruebas);padding:10px;display:flex;flex-direction:column;gap:6px}
-.p-ticket i{display:block;height:7px;border-radius:4px;background:var(--line)}
-.p-timer{font:800 2.6rem var(--f-display);color:var(--c-din);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.p-groups{display:flex;gap:10px}.p-groups i{display:grid;grid-template-columns:repeat(2,14px);gap:4px;padding:8px;border-radius:10px;background:var(--surface)}
-.p-groups i b{width:14px;height:14px;border-radius:50%;background:var(--c-din);display:block}
-.p-sem{display:flex;gap:10px}.p-sem i{width:38px;height:38px;border-radius:50%}
-
-/* FEATURE CTA */
-.create{margin-block:56px 24px;background:var(--surface);border:1px solid var(--line);border-radius:22px;display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden}
-.create .txt{padding:36px;min-width:0}
-.create h2{font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin:6px 0 10px}
-.create p{color:var(--muted);margin:0 0 20px;max-width:44ch}
-.create ul{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:8px}
-.create li{display:flex;gap:10px;align-items:flex-start}
-.create li svg{flex:none;color:var(--c-juegos);margin-top:3px}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 20px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-.btn.primary{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
-.create .art{background:var(--sunk);padding:28px;display:flex;align-items:center;justify-content:center;min-width:0}
-.builder{width:100%;max-width:360px;background:var(--surface);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:10px;font-size:.85rem}
-.builder .row{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;gap:10px;align-items:center}
-.builder .row span{color:var(--muted)}
-.builder .row.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--t-pres)}
-.builder .add{border:1.5px dashed var(--line);border-radius:10px;padding:10px;text-align:center;color:var(--muted)}
-@media (max-width:820px){.create{grid-template-columns:1fr}.create .txt{padding:26px}}
-
-/* FOOTER */
-footer{background:var(--navy);color:var(--on-navy-muted);margin-top:56px;font-size:.88rem}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:30px}
-footer strong{color:var(--on-navy)}
-.stripe{height:5px;background:linear-gradient(90deg,#2a8a55 0 25%,#2f6fd6 25% 50%,#ffffff 50% 75%,#c63a3e 75%)}
-
-/* SHEET */
-.scrim{position:fixed;inset:0;background:rgba(8,16,32,.5);z-index:40}
-.sheet{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:41;background:var(--surface);color:var(--ink);border-radius:20px;width:min(640px,calc(100% - 32px));max-height:88vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
-.sheet .thumb{height:200px}
-.sheet .in{padding:22px 24px 24px}
-.sheet h3{font-size:1.5rem;font-weight:700;margin:6px 0 6px}
-.sheet .x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);cursor:pointer;box-shadow:var(--shadow);font-size:1.2rem}
-.sheet h4{margin:18px 0 6px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.sheet ul{margin:0;padding-left:18px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.actions .btn{flex:1;min-width:150px;justify-content:center}
-@media (max-width:560px){.sheet{top:auto;bottom:0;left:0;transform:none;width:100%;border-radius:20px 20px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}}
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:10px;font-size:.9rem;z-index:60;max-width:calc(100% - 32px)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}.card:hover{transform:none}}
-</style>
+<link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
 
-<nav class="nav" aria-label="Principal">
-  <div class="wrap">
-    <a class="logo" href="#inicio">
-      <span class="mk"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20l7-12 4 6 3-4 6 10z"/></svg></span>
-      <span>Aula Interactiva<small>Primer Ciclo · Cordillera</small></span>
+<header class="encabezado">
+  <div class="envoltura">
+    <a class="marca" href="index.html">
+      <span class="marca-icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20l7-12 4 6 3-4 6 10z"></path></svg></span>
+      <span class="marca-texto"><b>Aula Interactiva</b><small>PRIMER CICLO · CORDILLERA</small></span>
     </a>
-    <div class="links">
-      <a href="#plantillas">Plantillas</a>
-      <a href="#como">Cómo funciona</a>
-      <a href="#crear">Crear prueba</a>
-      <a href="#plantillas" data-filter="favs">Más usadas</a>
-    </div>
-    <button class="cta" type="button" data-go="crear">Crear actividad</button>
-  </div>
-</nav>
-
-<header class="hero" id="inicio">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow" style="color:#8fd3ae">Repositorio de plantillas · 1° a 4° básico</div>
-      <h1 style="margin-top:12px">Tu clase, <em>más interactiva</em> en cinco minutos.</h1>
-      <p class="lede">Elige una plantilla, escribe tu contenido y proyéctala en la sala. Juegos, presentaciones, pruebas y dinámicas listas para usar, sin usuario ni contraseña.</p>
-      <form class="hsearch" id="hform" role="search">
-        <label for="hq">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="hq" type="search" placeholder="¿Qué quieres hacer hoy? Ej: repasar sílabas" autocomplete="off">
-        </label>
-        <button type="submit">Buscar</button>
-      </form>
-      <div class="quick">Populares:
-        <button type="button" data-q="ruleta">Ruleta</button>
-        <button type="button" data-q="quiz">Quiz</button>
-        <button type="button" data-q="memorice">Memorice</button>
-        <button type="button" data-q="temporizador">Temporizador</button>
-      </div>
-      <div class="stats">
-        <div><b id="st-n">13</b><span>plantillas</span></div>
-        <div><b>4</b><span>categorías</span></div>
-        <div><b>8</b><span>cursos de 1° ciclo</span></div>
-      </div>
-    </div>
-
-    <div class="screen" aria-label="Vista previa: quiz proyectado">
-      <div class="bar"><i></i><i></i><i></i><span>Quiz · Matemática 2° básico</span></div>
-      <div class="body">
-        <div class="qhead"><span>Pregunta 3 de 5</span><span>⏱ 0:20</span></div>
-        <div class="qprog"><div></div></div>
-        <div class="qtext">¿Cuánto es 7 + 5?</div>
-        <div class="opts" id="demo">
-          <button class="opt" type="button" data-ok="0"><span class="l" style="background:var(--c-juegos)">A</span>11</button>
-          <button class="opt" type="button" data-ok="1"><span class="l" style="background:var(--c-pres)">B</span>12</button>
-          <button class="opt" type="button" data-ok="0"><span class="l" style="background:var(--c-din)">C</span>13</button>
-          <button class="opt" type="button" data-ok="0"><span class="l" style="background:var(--c-pruebas)">D</span>75</button>
-        </div>
-        <div class="qfoot" id="demo-msg">Toca una alternativa para probar.</div>
-      </div>
+    <nav class="nav-principal" aria-label="Principal">
+      <a href="index.html" aria-current="page">Inicio</a>
+      <a href="catalogo.html">Explorar</a>
+      <a href="#aprende">Aprende a crear</a>
+    </nav>
+    <div class="encabezado-acciones">
+      <a class="boton-subir" href="#aprende" aria-label="Subir actividad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg><span>Subir actividad</span></a>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="steps wrap" id="como">
-    <div class="sec-head">
-      <div><div class="eyebrow">Cómo funciona</div><h2>De la plantilla a la sala</h2></div>
-      <p>Pensado para el profesor con poco tiempo: nada que instalar, nada que configurar.</p>
-    </div>
-    <ol>
-      <li><h3>Elige una plantilla</h3><p>Filtra por tipo de actividad o busca por asignatura y contenido.</p></li>
-      <li><h3>Escribe tu contenido</h3><p>Preguntas, palabras o imágenes en un formulario simple. Se guarda en tu planilla.</p></li>
-      <li><h3>Proyecta y juega</h3><p>Abre la actividad en el computador de la sala, a pantalla completa.</p></li>
-    </ol>
-  </section>
-
-  <section class="catalog wrap" id="plantillas">
-    <div class="sec-head" style="margin-bottom:8px">
-      <div><div class="eyebrow">Catálogo</div><h2>Plantillas disponibles</h2></div>
-    </div>
-    <div class="toolbar">
-      <div class="chips" id="chips" role="toolbar" aria-label="Filtrar por categoría"></div>
-      <label class="mini-search" for="q">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Filtrar…" autocomplete="off">
-      </label>
-    </div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <section class="wrap" id="crear">
-    <div class="create">
-      <div class="txt">
-        <div class="eyebrow">Creador de pruebas</div>
-        <h2>Arma tu propia prueba o quiz</h2>
-        <p>Escribe las preguntas una vez y úsalas como quiz proyectado, ticket de salida o verdadero y falso.</p>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4 10-10"/></svg>Alternativas, verdadero o falso y respuesta corta</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4 10-10"/></svg>Imágenes en las preguntas</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4 10-10"/></svg>Compartir con otros profesores del nivel</li>
-        </ul>
-        <button class="btn primary" type="button" id="btn-crear">Comenzar una prueba</button>
+<section class="hero">
+  <div class="envoltura">
+    <div class="hero-texto">
+      <div class="antetitulo">Hola, profe</div>
+      <h1>Tu clase, más interactiva en cinco minutos.</h1>
+      <p class="hero-bajada">Elige una actividad del ciclo y proyéctala. O sube la actividad que creaste con Claude.</p>
+      <form class="buscador-grande" role="search" action="catalogo.html" method="get">
+        <label for="buscar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span class="visualmente-oculto">Buscar actividades</span><input id="buscar" name="q" type="search" placeholder="¿Qué quieres trabajar? Ej: sílabas, sumas, vertebrados"></label>
+        <button type="submit">Buscar</button>
+      </form>
+      <div class="atajos" id="atajos">Explora por asignatura:
+        <a href="catalogo.html?asignatura=Lenguaje">Lenguaje</a>
+        <a href="catalogo.html?asignatura=Matemática">Matemática</a>
+        <a href="catalogo.html?asignatura=Ciencias%20Naturales">Ciencias</a>
+        <a href="catalogo.html?asignatura=Religión">Religión</a>
       </div>
-      <div class="art">
-        <div class="builder" aria-hidden="true">
-          <div class="row"><strong>Prueba · Ciencias 3° básico</strong><span>4 preguntas</span></div>
-          <div class="row on"><span>1.</span><strong style="flex:1">¿Qué necesita una planta para vivir?</strong><span>Alternativas</span></div>
-          <div class="row"><span>2.</span><strong style="flex:1">El sol es una estrella</strong><span>V / F</span></div>
-          <div class="row"><span>3.</span><strong style="flex:1">Nombra un animal herbívoro</strong><span>Corta</span></div>
-          <div class="add">+ Agregar pregunta</div>
+    </div>
+
+    <div class="hero-vista" aria-hidden="true">
+      <div class="vista-quiz">
+        <div class="vista-quiz-barra"><b>Quiz · Matemática 2° básico</b><span>Pregunta 3 de 8 · 0:18</span></div>
+        <div class="vista-quiz-cuerpo">
+          <div class="vista-quiz-pregunta">¿Cuánto es 7 + 5?</div>
+          <div class="vista-quiz-opciones">
+            <span style="background:#23804F">11</span>
+            <span class="correcta" style="background:#2C6BD3">12 ✓</span>
+            <span style="background:#A8681A">13</span>
+            <span style="background:#C2373B">75</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-paneles">
+        <div class="panel-oscuro" style="flex:1 1 220px">
+          <h2>PUNTAJE POR CASAS · 2°A</h2>
+          <div class="casas">
+            <div class="casa"><span>Cóndor</span><span class="casa-barra"><i style="width:86%;background:#3FB57A"></i></span><span>43</span></div>
+            <div class="casa"><span>Águilas</span><span class="casa-barra"><i style="width:72%;background:#5B95F0"></i></span><span>36</span></div>
+            <div class="casa"><span>Pumas</span><span class="casa-barra"><i style="width:64%;background:#FFFFFF"></i></span><span>32</span></div>
+            <div class="casa"><span>Linces</span><span class="casa-barra"><i style="width:58%;background:#E9585C"></i></span><span>29</span></div>
+          </div>
+        </div>
+        <div class="panel-oscuro opciones-sala" style="flex:1 1 200px">
+          <h2>OPCIONES DE SALA</h2>
+          <div><span>Lectura en voz alta</span><b>Activa</b></div>
+          <div><span>Sonidos</span><b>Activa</b></div>
+          <div><span>Temporizador</span><span style="color:#B5C3DB">20 s</span></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="seccion envoltura" aria-labelledby="t-empezar">
+  <div class="antetitulo">Empezar</div>
+  <h2 class="titulo-seccion" id="t-empezar">¿Qué quieres hacer hoy?</h2>
+  <div class="grilla">
+    <a class="tarjeta-accion" href="catalogo.html">
+      <span class="icono-cuadro" style="background:#E3F1E9;color:#23804F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M12 16v4M8 20h8"></path></svg></span>
+      <h3>Proyectar una actividad</h3>
+      <span>Juegos, clasificaciones y dinámicas listas para la sala, a pantalla completa.</span>
+      <span class="pie-tarjeta" style="color:#23804F" id="cuenta-actividades">Ver actividades →</span>
+    </a>
+    <div class="tarjeta-accion pronto">
+      <span class="icono-cuadro" style="background:#E4EDFB;color:#2C6BD3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"></path><path d="M14 2v6h6M9 13h8M9 17h6"></path></svg></span>
+      <h3>Armar una guía</h3>
+      <span>Ejercitación, comprensión lectora, trazos y rúbricas. Sale en PDF y Docs.</span>
+      <span class="pie-tarjeta etiqueta-pronto">Próximamente</span>
+    </div>
+    <div class="tarjeta-accion pronto">
+      <span class="icono-cuadro" style="background:#FAE7E7;color:#C2373B"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3 8-8"></path><path d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h9"></path></svg></span>
+      <h3>Crear una evaluación</h3>
+      <span>Pruebas con pauta, puntaje y nivel de logro por alumno.</span>
+      <span class="pie-tarjeta etiqueta-pronto">Próximamente</span>
+    </div>
+    <a class="tarjeta-accion oscura" href="#aprende">
+      <span class="icono-cuadro" style="background:rgba(255,255,255,0.12);color:#FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"></path></svg></span>
+      <h3>Subir mi actividad</h3>
+      <span>¿La hiciste con Claude? Compártela con el ciclo en formato HTML.</span>
+      <span class="pie-tarjeta">Cómo subirla →</span>
+    </a>
+  </div>
+</section>
+
+<section class="seccion envoltura" aria-labelledby="t-nuevo" style="padding-top:48px">
+  <div class="seccion-cabeza">
+    <div><div class="antetitulo">Banco del ciclo</div><h2 class="titulo-seccion" id="t-nuevo">Lo más nuevo</h2></div>
+    <a href="catalogo.html">Ver todo el banco →</a>
+  </div>
+  <div class="grilla" id="lo-nuevo" aria-live="polite"></div>
+</section>
+
+<section class="aprende envoltura" id="aprende" aria-labelledby="t-aprende">
+  <div class="aprende-caja">
+    <div class="aprende-texto">
+      <div class="antetitulo">Aprende a crear</div>
+      <h2 id="t-aprende">Haz tu propia actividad con Claude</h2>
+      <p>Tu actividad puede salir con el estilo de la plataforma, funcionar en proyector, computador, tablet y celular, y más adelante guardar resultados.</p>
+      <ol class="pasos">
+        <li><span>1</span><span><strong>Pídela a Claude.</strong><br><small>Di qué tema, qué curso y qué tipo de actividad quieres.</small></span></li>
+        <li><span>2</span><span><strong>Pruébala y ajústala.</strong><br><small>Pídele cambios hasta que quede como la quieres.</small></span></li>
+        <li><span>3</span><span><strong>Envíala a Subdirección Primer Ciclo.</strong><br><small>La revisamos y la publicamos en el banco del ciclo. Pronto podrás subirla tú mismo desde aquí.</small></span></li>
+      </ol>
+      <div class="botones">
+        <a class="boton principal" href="catalogo.html">Ver actividades de ejemplo</a>
+      </div>
+    </div>
+    <div class="aprende-chat" aria-label="Ejemplo de conversación con Claude">
+      <div class="burbuja profe">Haz una actividad para Aula Interactiva sobre los animales vertebrados, 3° básico, para clasificar.</div>
+      <div class="burbuja claude">Listo. Hice 10 tarjetas de animales para ordenar en mamíferos, aves, reptiles, anfibios y peces, con lectura en voz alta y registro de puntaje.</div>
+      <div class="archivo-listo"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3"></path></svg></span><span><strong>vertebrados-3basico.html</strong><br><span style="color:#556178">Listo para subir</span></span></div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div class="stripe"></div>
-  <div class="wrap">
-    <div><strong>Aula Interactiva</strong> · Subdirección Primer Ciclo · Colegio Cordillera</div>
-    <div>Boceto de diseño · contenido de ejemplo</div>
+<footer class="pie">
+  <div class="pie-casas" aria-hidden="true"><span style="background:#23804F"></span><span style="background:#2C6BD3"></span><span style="background:#FFFFFF"></span><span style="background:#C2373B"></span></div>
+  <div class="envoltura">
+    <span><strong>Aula Interactiva</strong> · Subdirección Primer Ciclo · Colegio Cordillera</span>
+    <span>Este sitio no guarda datos de alumnos.</span>
   </div>
 </footer>
 
-<div class="scrim" id="scrim" hidden></div>
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t" hidden></div>
-<div class="toast" id="toast" role="status" hidden></div>
-
+<script src="assets/app.js"></script>
 <script>
-const CATS={
-  juegos:{name:"Juegos interactivos",c:"--c-juegos",t:"--t-juegos"},
-  pres:{name:"Presentaciones",c:"--c-pres",t:"--t-pres"},
-  pruebas:{name:"Pruebas y quizzes",c:"--c-pruebas",t:"--t-pruebas"},
-  din:{name:"Dinámicas de aula",c:"--c-din",t:"--t-din"}
-};
-const P={
-  ruleta:'<div class="p-wheel"></div>',
-  memoria:'<div class="p-mem"><i></i><i class="f">ma</i><i></i><i></i><i></i><i></i><i class="f">ma</i><i></i></div>',
-  arrastrar:'<div class="p-drag"><i>1. Había una vez…</i><i class="m">3. Al final…</i><i>2. Un día…</i></div>',
-  sopa:'<div class="p-sopa">'+"SOLARBE".split("").map((l,i)=>i<3?`<b>${l}</b>`:`<span>${l}</span>`).join("")+"MLUNAKP".split("").map((l,i)=>i>0&&i<5?`<b>${l}</b>`:`<span>${l}</span>`).join("")+"RTAGUOX".split("").map(l=>`<span>${l}</span>`).join("")+'</div>',
-  slides:'<div class="p-slide"><i class="h"></i><i></i><i style="width:80%"></i><i style="width:55%"></i></div>',
-  cuento:'<div class="p-book"><i><b class="c"></b><b></b><b></b></i><i><b></b><b></b><b style="width:60%"></b><b></b></i></div>',
-  linea:'<div class="p-line"><i style="left:0"></i><i style="left:30%"></i><i style="left:62%"></i><i style="left:calc(100% - 16px)"></i></div>',
-  quiz:'<div class="p-quiz"><i class="q"></i><i></i><i class="ok"></i><i></i><i></i></div>',
-  vf:'<div class="p-vf"><i style="background:var(--c-juegos)">V</i><i style="background:var(--c-pruebas)">F</i></div>',
-  ticket:'<div class="p-ticket"><i style="width:60%;background:var(--c-pruebas);opacity:.6"></i><i></i><i style="width:75%"></i></div>',
-  timer:'<div class="p-timer">04:59</div>',
-  grupos:'<div class="p-groups"><i><b></b><b></b><b></b><b></b></i><i><b></b><b></b><b></b><b></b></i><i><b></b><b></b><b></b></i></div>',
-  semaforo:'<div class="p-sem"><i style="background:var(--c-juegos)"></i><i style="background:var(--c-din)"></i><i style="background:var(--c-pruebas)"></i></div>'
-};
-const DATA=[
-  {cat:"juegos",p:"ruleta",t:"Ruleta de preguntas",d:"Gira la ruleta y el curso responde la pregunta que salga.",tags:["Todas","1°–4°"],uso:["Repaso al cierre de clase","Elegir alumno al azar"],pide:["Lista de preguntas o nombres"],nuevo:false,fav:true},
-  {cat:"juegos",p:"memoria",t:"Memorice",d:"Parejas de palabra e imagen para vocabulario o sílabas.",tags:["Lenguaje","Inglés","1°–2°"],uso:["Vocabulario nuevo","Asociar sílaba y dibujo"],pide:["Pares de palabras o imágenes"],fav:true},
-  {cat:"juegos",p:"arrastrar",t:"Arrastrar y ordenar",d:"Ordenar secuencias, oraciones o números arrastrando.",tags:["Matemática","Lenguaje"],uso:["Secuencia de un cuento","Ordenar números"],pide:["Elementos en el orden correcto"]},
-  {cat:"juegos",p:"sopa",t:"Sopa de letras",d:"Se genera sola a partir de tu lista de palabras.",tags:["Lenguaje","Ciencias"],uso:["Palabras del día","Conceptos de la unidad"],pide:["Lista de palabras"],nuevo:true},
-  {cat:"pres",p:"slides",t:"Presentación de clase",d:"Diapositivas con inicio, desarrollo y cierre, con los colores del colegio.",tags:["Todas"],uso:["Contenido nuevo","Objetivo de la clase visible"],pide:["Objetivo, títulos y textos"],fav:true},
-  {cat:"pres",p:"cuento",t:"Cuento interactivo",d:"Lectura página a página con preguntas entre medio.",tags:["Lenguaje","Religión","1°–3°"],uso:["Lectura compartida","Comprensión lectora"],pide:["Texto por página e imágenes"]},
-  {cat:"pres",p:"linea",t:"Línea de tiempo",d:"Hitos que se van revelando al avanzar.",tags:["Historia","Religión","3°–4°"],uso:["Historia de Chile","Vida de un santo"],pide:["Fechas y descripción de cada hito"],nuevo:true},
-  {cat:"pruebas",p:"quiz",t:"Quiz de alternativas",d:"Preguntas con 3 o 4 alternativas y puntaje automático.",tags:["Todas","Formativa"],uso:["Control rápido","Diagnóstico de unidad"],pide:["Preguntas y alternativas"],fav:true},
-  {cat:"pruebas",p:"vf",t:"Verdadero o falso",d:"Afirmaciones con respuesta inmediata y explicación.",tags:["Ciencias","Historia"],uso:["Repaso antes de prueba","Errores frecuentes"],pide:["Afirmaciones y respuesta"]},
-  {cat:"pruebas",p:"ticket",t:"Ticket de salida",d:"Dos o tres preguntas breves al final de la clase.",tags:["Todas"],uso:["Verificar el objetivo","Recoger dudas"],pide:["2 o 3 preguntas"]},
-  {cat:"din",p:"timer",t:"Temporizador visual",d:"Cuenta regresiva grande para proyectar en la pizarra.",tags:["Todas"],uso:["Trabajo individual","Transiciones"],pide:["Minutos"],fav:true},
-  {cat:"din",p:"grupos",t:"Armador de grupos",d:"Forma grupos al azar con la lista del curso.",tags:["Todas"],uso:["Trabajo colaborativo","Rotar compañeros"],pide:["Curso y tamaño del grupo"]},
-  {cat:"din",p:"semaforo",t:"Semáforo de comprensión",d:"Cada alumno marca verde, amarillo o rojo según cómo va.",tags:["Todas"],uso:["Monitorear la clase","Ajustar el ritmo"],pide:["Nada: se usa directo"]}
-];
-const $=s=>document.querySelector(s);
-let active="todas";
-try{active=localStorage.getItem("aula-cat2")||"todas"}catch(e){}
-
-function chips(){
-  const all=[["todas","Todas",null,DATA.length],["favs","Más usadas",null,DATA.filter(d=>d.fav).length],...Object.entries(CATS).map(([k,c])=>[k,c.name,c.c,DATA.filter(d=>d.cat===k).length])];
-  $("#chips").innerHTML=all.map(([k,n,c,cnt])=>`<button class="chip" type="button" data-k="${k}" aria-pressed="${active===k}">${c?`<span class="dot" style="background:var(${c})"></span>`:""}${n} <span class="n">${cnt}</span></button>`).join("");
-}
-function thumb(d){const c=CATS[d.cat];return `<div class="thumb" style="background:var(${c.t})"><span class="badge">${c.name.split(" ")[0]}</span>${d.nuevo?'<span class="badge new">Nuevo</span>':""}${P[d.p]}</div>`}
-function render(){
-  const q=$("#q").value.trim().toLowerCase();
-  const items=DATA.filter(d=>(active==="todas"||(active==="favs"?d.fav:d.cat===active))&&(!q||(d.t+" "+d.d+" "+d.tags.join(" ")+" "+CATS[d.cat].name).toLowerCase().includes(q)));
-  $("#grid").innerHTML=items.length?items.map(d=>`<button class="card" type="button" data-i="${DATA.indexOf(d)}">${thumb(d)}<div class="cbody"><h3>${d.t}</h3><p>${d.d}</p><div class="meta">${d.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div></button>`).join("")
-    :`<p class="empty" style="grid-column:1/-1">No encontramos plantillas para “${q}”. Prueba con otra palabra o elige “Todas”.</p>`;
-}
-function setFilter(k){active=k;try{localStorage.setItem("aula-cat2",k)}catch(e){}chips();render()}
-function openSheet(d){
-  $("#sheet").innerHTML=`<button class="x" type="button" aria-label="Cerrar" id="sh-x">×</button>${thumb(d)}<div class="in">
-    <div class="eyebrow" style="color:var(${CATS[d.cat].c})">${CATS[d.cat].name}</div>
-    <h3 id="sh-t">${d.t}</h3><p style="margin:0;color:var(--muted)">${d.d}</p>
-    <h4>Ideal para</h4><ul>${d.uso.map(u=>`<li>${u}</li>`).join("")}</ul>
-    <h4>Qué necesitas tener listo</h4><ul>${d.pide.map(u=>`<li>${u}</li>`).join("")}</ul>
-    <div class="actions"><button class="btn" type="button" id="b-ver">Ver ejemplo</button><button class="btn primary" type="button" id="b-usar">Usar esta plantilla</button></div></div>`;
-  $("#scrim").hidden=false;$("#sheet").hidden=false;$("#b-usar").focus();
-  $("#sh-x").onclick=close;
-  $("#b-usar").onclick=()=>{close();toast(`Aquí se abrirá el editor de “${d.t}”.`)};
-  $("#b-ver").onclick=()=>{close();toast("Aquí se abrirá un ejemplo listo para proyectar.")};
-}
-function close(){$("#scrim").hidden=true;$("#sheet").hidden=true}
-let tt;function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2600)}
-function goSearch(v){$("#q").value=v;setFilter("todas");$("#plantillas").scrollIntoView()}
-
-$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b)setFilter(b.dataset.k)});
-$("#grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openSheet(DATA[+c.dataset.i])});
-$("#q").addEventListener("input",render);
-$("#hform").addEventListener("submit",e=>{e.preventDefault();goSearch($("#hq").value.trim())});
-document.querySelectorAll(".quick button").forEach(b=>b.addEventListener("click",()=>goSearch(b.dataset.q)));
-document.querySelector('.links a[data-filter="favs"]').addEventListener("click",()=>setFilter("favs"));
-document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>$("#"+b.dataset.go).scrollIntoView()));
-$("#btn-crear").addEventListener("click",()=>toast("Aquí se abrirá el creador de pruebas."));
-$("#scrim").addEventListener("click",close);
-document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
-$("#demo").addEventListener("click",e=>{
-  const b=e.target.closest(".opt");if(!b)return;
-  document.querySelectorAll("#demo .opt").forEach(o=>o.classList.remove("ok","bad"));
-  const ok=b.dataset.ok==="1";b.classList.add(ok?"ok":"bad");
-  if(!ok)document.querySelector('#demo .opt[data-ok="1"]').classList.add("ok");
-  $("#demo-msg").textContent=ok?"¡Correcto! 7 + 5 = 12.":"Casi. La respuesta correcta es 12.";
-});
-$("#st-n").textContent=DATA.length;
-chips();render();
+(function () {
+  var cont = document.getElementById('lo-nuevo');
+  Aula.cargarCatalogo().then(function (lista) {
+    var n = lista.length;
+    document.getElementById('cuenta-actividades').textContent =
+      n ? (n === 1 ? '1 actividad →' : n + ' actividades →') : 'Ver actividades →';
+    if (!n) {
+      cont.innerHTML = '<div class="vacio"><strong>Aún no hay actividades publicadas</strong>Pronto aparecerán aquí las del ciclo.</div>';
+      return;
+    }
+    lista.slice().sort(function (a, b) { return String(b.fecha || '').localeCompare(String(a.fecha || '')); })
+      .slice(0, 4)
+      .forEach(function (a) { cont.appendChild(Aula.crearTarjeta(a)); });
+  }).catch(function () {
+    cont.innerHTML = '<div class="vacio"><strong>No se pudieron cargar las actividades</strong>Revisa tu conexión y vuelve a intentarlo.</div>';
+  });
+  Aula.revisarEnlace();
+})();
 </script>
 </body>
 </html>

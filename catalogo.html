@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorar · Aula Interactiva</title>
+<meta name="description" content="Actividades del Primer Ciclo del Colegio Cordillera para proyectar en la sala.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+
+<header class="encabezado">
+  <div class="envoltura">
+    <a class="marca" href="index.html">
+      <span class="marca-icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20l7-12 4 6 3-4 6 10z"></path></svg></span>
+      <span class="marca-texto"><b>Aula Interactiva</b><small>PRIMER CICLO · CORDILLERA</small></span>
+    </a>
+    <nav class="nav-principal" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html" aria-current="page">Explorar</a>
+      <a href="index.html#aprende">Aprende a crear</a>
+    </nav>
+    <div class="encabezado-acciones">
+      <a class="boton-subir" href="index.html#aprende" aria-label="Subir actividad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg><span>Subir actividad</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="explorar envoltura">
+  <div class="explorar-cabeza">
+    <div>
+      <h1>Explorar</h1>
+      <p>Actividades del ciclo listas para proyectar. Toca una para abrirla a pantalla completa.</p>
+    </div>
+    <label class="buscador" for="q"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span class="visualmente-oculto">Buscar</span><input id="q" type="search" placeholder="Buscar por tema, asignatura o tipo" autocomplete="off"></label>
+  </div>
+
+  <div class="explorar-cuerpo">
+    <aside class="filtros" aria-label="Filtros">
+      <div class="filtro">
+        <label class="filtro-titulo" for="asig">Asignatura</label>
+        <select id="asig">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="filtro">
+        <span class="filtro-titulo" id="t-nivel">Nivel</span>
+        <div class="niveles" role="group" aria-labelledby="t-nivel" id="niveles">
+          <button type="button" data-nivel="1" aria-pressed="false" aria-label="1° básico">1°</button>
+          <button type="button" data-nivel="2" aria-pressed="false" aria-label="2° básico">2°</button>
+          <button type="button" data-nivel="3" aria-pressed="false" aria-label="3° básico">3°</button>
+          <button type="button" data-nivel="4" aria-pressed="false" aria-label="4° básico">4°</button>
+        </div>
+      </div>
+      <div class="ayuda-caja">
+        <strong>¿No encuentras lo que buscas?</strong>
+        <span>Créalo con Claude y envíalo a Subdirección Primer Ciclo.</span>
+        <a href="index.html#aprende">Ver cómo →</a>
+      </div>
+    </aside>
+
+    <section class="resultados" aria-label="Actividades">
+      <div class="resultados-barra">
+        <span id="resumen" aria-live="polite">Cargando…</span>
+        <label>Ordenar por
+          <select id="orden">
+            <option value="recientes">Más recientes</option>
+            <option value="titulo">Título (A–Z)</option>
+          </select>
+        </label>
+      </div>
+      <div class="grilla" id="grilla"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="pie">
+  <div class="pie-casas" aria-hidden="true"><span style="background:#23804F"></span><span style="background:#2C6BD3"></span><span style="background:#FFFFFF"></span><span style="background:#C2373B"></span></div>
+  <div class="envoltura">
+    <span><strong>Aula Interactiva</strong> · Subdirección Primer Ciclo · Colegio Cordillera</span>
+    <span>Este sitio no guarda datos de alumnos.</span>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  var ASIGNATURAS = ['Lenguaje', 'Matemática', 'Ciencias Naturales', 'Historia', 'Religión', 'Inglés'];
+  var $q = document.getElementById('q');
+  var $asig = document.getElementById('asig');
+  var $orden = document.getElementById('orden');
+  var $grilla = document.getElementById('grilla');
+  var $resumen = document.getElementById('resumen');
+  var botonesNivel = Array.prototype.slice.call(document.querySelectorAll('#niveles button'));
+  var todas = [];
+
+  // Estado inicial desde la dirección (ej: catalogo.html?q=sumas&asignatura=Lenguaje&nivel=3)
+  var p = new URLSearchParams(location.search);
+  var estado = { q: p.get('q') || '', asignatura: p.get('asignatura') || '', nivel: p.get('nivel') || '', orden: p.get('orden') || 'recientes' };
+
+  function guardarEnDireccion() {
+    var u = new URLSearchParams();
+    if (estado.q) u.set('q', estado.q);
+    if (estado.asignatura) u.set('asignatura', estado.asignatura);
+    if (estado.nivel) u.set('nivel', estado.nivel);
+    if (estado.orden !== 'recientes') u.set('orden', estado.orden);
+    var s = u.toString();
+    history.replaceState(history.state, '', location.pathname + (s ? '?' + s : '') + location.hash);
+  }
+
+  function numeroNivel(a) { var m = String(a.nivel || '').match(/[1-4]/); return m ? m[0] : ''; }
+
+  function mostrar() {
+    var palabras = Aula.sinTildes(estado.q).split(/\s+/).filter(Boolean);
+    var asig = Aula.sinTildes(estado.asignatura);
+    var lista = todas.filter(function (a) {
+      if (asig && Aula.sinTildes(a.asignatura).indexOf(asig) !== 0) return false;
+      if (estado.nivel && numeroNivel(a) !== estado.nivel) return false;
+      if (palabras.length) {
+        var texto = Aula.sinTildes([a.titulo, a.asignatura, a.nivel, a.tipo, a.descripcion, a.autor].join(' '));
+        for (var i = 0; i < palabras.length; i++) if (texto.indexOf(palabras[i]) === -1) return false;
+      }
+      return true;
+    });
+    lista.sort(estado.orden === 'titulo'
+      ? function (a, b) { return String(a.titulo).localeCompare(String(b.titulo), 'es'); }
+      : function (a, b) { return String(b.fecha || '').localeCompare(String(a.fecha || '')); });
+
+    $grilla.innerHTML = '';
+    $resumen.textContent = lista.length + (lista.length === 1 ? ' resultado' : ' resultados');
+    if (!lista.length) {
+      var v = document.createElement('div');
+      v.className = 'vacio';
+      v.style.gridColumn = '1 / -1';
+      v.innerHTML = '<strong>No encontramos actividades con esos filtros</strong>Prueba con otra palabra o quita algún filtro. ';
+      var limpiar = document.createElement('button');
+      limpiar.type = 'button';
+      limpiar.className = 'boton';
+      limpiar.style.marginTop = '12px';
+      limpiar.textContent = 'Quitar filtros';
+      limpiar.addEventListener('click', function () {
+        estado.q = ''; estado.asignatura = ''; estado.nivel = '';
+        sincronizarControles(); guardarEnDireccion(); mostrar();
+      });
+      v.appendChild(document.createElement('br'));
+      v.appendChild(limpiar);
+      $grilla.appendChild(v);
+      return;
+    }
+    lista.forEach(function (a) { $grilla.appendChild(Aula.crearTarjeta(a)); });
+  }
+
+  function sincronizarControles() {
+    $q.value = estado.q;
+    $asig.value = estado.asignatura;
+    $orden.value = estado.orden;
+    botonesNivel.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-nivel') === estado.nivel ? 'true' : 'false'); });
+  }
+
+  var espera;
+  $q.addEventListener('input', function () {
+    clearTimeout(espera);
+    espera = setTimeout(function () { estado.q = $q.value.trim(); guardarEnDireccion(); mostrar(); }, 150);
+  });
+  $asig.addEventListener('change', function () { estado.asignatura = $asig.value; guardarEnDireccion(); mostrar(); });
+  $orden.addEventListener('change', function () { estado.orden = $orden.value; guardarEnDireccion(); mostrar(); });
+  botonesNivel.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var n = b.getAttribute('data-nivel');
+      estado.nivel = estado.nivel === n ? '' : n;
+      sincronizarControles(); guardarEnDireccion(); mostrar();
+    });
+  });
+
+  Aula.cargarCatalogo().then(function (lista) {
+    todas = lista;
+    // Asignaturas: las de siempre más cualquiera nueva que aparezca en el catálogo
+    var nombres = ASIGNATURAS.slice();
+    lista.forEach(function (a) { if (a.asignatura && nombres.indexOf(a.asignatura) === -1) nombres.push(a.asignatura); });
+    if (estado.asignatura && nombres.indexOf(estado.asignatura) === -1) nombres.push(estado.asignatura);
+    nombres.forEach(function (n) { var o = document.createElement('option'); o.value = n; o.textContent = n; $asig.appendChild(o); });
+    sincronizarControles();
+    mostrar();
+    Aula.revisarEnlace();
+  }).catch(function () {
+    $resumen.textContent = '';
+    $grilla.innerHTML = '<div class="vacio" style="grid-column:1/-1"><strong>No se pudieron cargar las actividades</strong>Revisa tu conexión y vuelve a intentarlo.</div>';
+  });
+})();
+</script>
+</body>
+</html>

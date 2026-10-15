@@ -7,7 +7,7 @@ Lee también `docs/ESPECIFICACION.md` (qué debe hacer la plataforma y en qué e
 ## Cómo se publica
 
 - Sitio estático en **GitHub Pages**, rama `main`, carpeta raíz. Cada push a `main` se publica solo en 1–2 minutos.
-- Dirección: `https://<usuario>.github.io/aula-interactiva/` (confírmala con `git remote -v` la primera vez y anótala aquí).
+- Dirección: `https://jmromerojohnson.github.io/aula-interactiva/`
 - Trabaja directo en `main` salvo que José Miguel pida otra cosa. Al terminar cada tarea: commit con mensaje en español, push, y dale el enlace para revisar.
 
 ## Reglas que no se rompen
