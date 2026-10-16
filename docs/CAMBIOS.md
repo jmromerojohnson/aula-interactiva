@@ -17,7 +17,7 @@ Se rehízo la base del sitio para que crecer sea fácil y ordenado. Detalle en `
 - **Cada actividad en su carpeta** (`actividades/<id>/`), con sus imágenes comprimidas (La gran aventura bajó de 2,9 MB a 1,8 MB).
 - **Herramienta** `herramientas/comprimir-imagenes.py`.
 - Las direcciones antiguas (`catalogo.html#ver=…` y `actividades/<id>.html`) siguen funcionando: redirigen a las nuevas.
-- Nuevo campo `"confiable": true` en el catálogo para actividades de Claude Design revisadas (las deja correr dentro de la sala).
+- Archivo `.nojekyll` en la raíz: sin él, GitHub Pages no publica carpetas que empiezan con `_` (como `actividades/_comun`). **No borrarlo.**
 - El catálogo ahora usa `id`, `asignatura` (id) y `niveles` (lista de números) en vez de `archivo`, `asignatura` (texto) y `nivel` (texto).
 
 ## v0-antes-de-cimientos — 16 de octubre de 2026
