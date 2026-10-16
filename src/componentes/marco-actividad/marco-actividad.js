@@ -6,7 +6,7 @@
    parte del sitio ("allow-same-origin") o su motor no arranca. Solo se permite
    a las marcadas "confiable": true en el catálogo, es decir, revisadas por el
    colegio. Con ese permiso la actividad podría leer lo que el sitio guarda en
-   el navegador; por eso nunca se marcan como confiables actividades sin revisar. */
+   el navegador; por eso nunca se marcan como confiables actividades sin revisar.
 
    Si la actividad avisa un resultado con
      window.parent.postMessage({ tipo: 'aula-resultado', actividad, puntaje, total }, '*')
