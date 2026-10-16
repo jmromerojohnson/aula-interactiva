@@ -1,0 +1,8 @@
+/* PIEZA: Marco de actividad */
+
+.marco-actividad {
+  display: block;
+  width: 100%; height: 100%;
+  border: 0;
+  background: var(--color-marino-profundo);
+}

@@ -1,0 +1,54 @@
+{
+  "bienvenida": {
+    "saludo": "Hola, profe",
+    "titulo": "Tu clase, más interactiva en cinco minutos.",
+    "bajada": "Elige una actividad del ciclo y proyéctala, o sube la que creaste con Claude. Todo ordenado por asignatura y nivel.",
+    "buscador": "¿Qué quieres trabajar? Ej: sílabas, sumas, vertebrados"
+  },
+
+  "destacada": {
+    "actividad": "la-gran-aventura-3-4basico",
+    "etiqueta": "Destacada de la semana",
+    "titulo": "La gran aventura",
+    "texto": "La parábola del hijo pródigo, en un recorrido ilustrado para proyectar.",
+    "imagen": ""
+  },
+
+  "secciones": [
+    {
+      "tipo": "recientes",
+      "titulo": "Recién agregadas",
+      "bajada": "Lo último que se sumó al banco del ciclo.",
+      "cantidad": 3
+    },
+    {
+      "tipo": "asignaturas",
+      "titulo": "Explora por asignatura"
+    },
+    {
+      "tipo": "plantillas",
+      "id": "plantillas",
+      "titulo": "Plantillas para la sala",
+      "bajada": "Escribes tus preguntas y la plataforma arma la actividad lista para proyectar.",
+      "elementos": [
+        { "nombre": "Quiz", "icono": "pregunta", "estado": "Próximamente" },
+        { "nombre": "Ruleta", "icono": "ruleta", "estado": "Próximamente" },
+        { "nombre": "Memorice", "icono": "cuadricula", "estado": "Próximamente" },
+        { "nombre": "Temporizador", "icono": "reloj", "estado": "Próximamente" },
+        { "nombre": "Armador de grupos", "icono": "grupo", "estado": "Próximamente" },
+        { "nombre": "Verdadero o falso", "icono": "lista", "estado": "Próximamente" }
+      ]
+    },
+    {
+      "tipo": "aprende",
+      "id": "aprende",
+      "saludo": "Aprende a crear",
+      "titulo": "Crea tu propia actividad con Claude, sin saber programar.",
+      "pasos": [
+        { "titulo": "Copia el kit", "texto": "Pega las instrucciones del kit en un proyecto de Claude." },
+        { "titulo": "Pide tu actividad", "texto": "Cuéntale el tema, el curso y el objetivo de la clase." },
+        { "titulo": "Súbela aquí", "texto": "Queda en el banco del ciclo, lista para proyectar." }
+      ]
+    }
+  ]
+}

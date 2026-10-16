@@ -1,0 +1,13 @@
+/* PIEZA: Aviso vacío o de error */
+
+.estado-vacio {
+  grid-column: 1 / -1;
+  display: flex; flex-direction: column; align-items: center; gap: var(--espacio-3);
+  padding: var(--espacio-10) var(--espacio-6);
+  border: 2px dashed var(--color-borde-fuerte);
+  border-radius: var(--radio-l);
+  text-align: center; color: var(--color-texto-medio);
+}
+.estado-vacio__titulo { font-family: var(--letra-titulos); font-size: var(--titulo-s); color: var(--color-marino); }
+.estado-vacio--error { border-color: var(--color-error); }
+.estado-vacio--error .estado-vacio__titulo { color: var(--color-error); }

@@ -1,0 +1,96 @@
+/* ==========================================================
+   MATERIALES DEL SITIO (tokens)
+   Todo color, letra, tamaño, borde y sombra del sitio sale de aquí.
+   Para cambiar el aspecto general, cambia un valor en este archivo:
+   el resto del sitio lo toma solo. No escribas colores sueltos
+   en otros archivos: agrégalos aquí con un nombre.
+   ========================================================== */
+
+:root {
+  /* ---------- Colores de marca ---------- */
+  --color-marino: #10264A;          /* encabezado, botones principales, títulos */
+  --color-marino-medio: #1A3866;
+  --color-marino-profundo: #0B1830; /* fondo de la sala */
+  --color-dorado: #E0A43A;          /* acento: destacar y llamar a la acción */
+  --color-dorado-oscuro: #9A6514;   /* dorado legible sobre fondo claro */
+  --color-tinta-calida: #2A2016;    /* texto sobre dorado */
+
+  /* ---------- Superficies ---------- */
+  --color-fondo: #F7F4EE;           /* papel: fondo general */
+  --color-superficie: #FFFFFF;      /* tarjetas, encabezado */
+  --color-superficie-suave: #F2EEE6;/* etiquetas, zonas secundarias */
+  --color-seleccion: #EEF1F7;       /* ítem activo del menú */
+
+  /* ---------- Texto ---------- */
+  --color-texto: #111C30;
+  --color-texto-medio: #3B4458;
+  --color-texto-suave: #5A6274;     /* mínimo legible sobre el fondo papel */
+  --color-texto-claro: #FFFFFF;
+  --color-texto-claro-suave: #C9D3E6;
+
+  /* ---------- Bordes ---------- */
+  --color-borde: #E4DED3;
+  --color-borde-fuerte: #D8D1C4;
+  --color-foco: #2C6BD3;            /* contorno al navegar con teclado */
+
+  /* ---------- Estados ---------- */
+  --color-error: #B3261E;
+  --color-exito: #23804F;
+
+  /* ---------- Tipografías ---------- */
+  --letra-titulos: 'Alegreya', Georgia, serif;
+  --letra-texto: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --letra-sala: 'Baloo 2', system-ui, sans-serif;   /* lo que leen los alumnos */
+
+  /* ---------- Tamaños de letra ---------- */
+  --texto-xs: 13px;
+  --texto-s: 15px;
+  --texto-m: 17px;   /* texto normal */
+  --texto-l: 20px;
+  --titulo-s: 22px;
+  --titulo-m: 34px;
+  --titulo-l: 48px;
+  --titulo-xl: clamp(40px, 5vw, 60px);
+
+  /* ---------- Espacios (escala de 4 px) ---------- */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 12px;
+  --espacio-4: 16px;
+  --espacio-5: 20px;
+  --espacio-6: 24px;
+  --espacio-8: 32px;
+  --espacio-10: 40px;
+  --espacio-12: 48px;
+  --espacio-14: 56px;
+  --espacio-16: 64px;
+
+  /* ---------- Bordes redondeados ---------- */
+  --radio-s: 8px;
+  --radio-m: 12px;
+  --radio-l: 18px;
+  --radio-xl: 24px;
+  --radio-pildora: 999px;
+
+  /* ---------- Sombras ---------- */
+  --sombra-suave: 0 2px 6px rgba(16, 38, 74, .05);
+  --sombra-media: 0 10px 30px rgba(16, 38, 74, .08);
+  --sombra-fuerte: 0 30px 60px rgba(42, 32, 22, .28);
+
+  /* ---------- Medidas ---------- */
+  --ancho-contenido: 1240px;
+  --margen-lateral: 32px;
+  --alto-tactil: 44px;              /* mínimo para tocar con el dedo */
+  --alto-barra-sala: 64px;
+
+  /* ---------- Movimiento ---------- */
+  --transicion: 160ms ease;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --margen-lateral: 16px;
+    --titulo-m: 28px;
+    --titulo-l: 36px;
+  }
+}

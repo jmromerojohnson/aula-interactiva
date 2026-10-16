@@ -1,0 +1,57 @@
+/* PÁGINA: Explorar */
+
+.explorar__cabecera {
+  display: flex; flex-direction: column; gap: 18px;
+  padding-top: 44px; padding-bottom: 28px;
+}
+.explorar__cabecera h1 { font-size: var(--titulo-l); line-height: 1.05; }
+.explorar__ruta { font-size: 14px; color: var(--color-texto-suave); }
+.explorar__ruta a { color: var(--color-texto-suave); }
+
+.explorar__cuerpo {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--espacio-8);
+  padding-bottom: var(--espacio-16);
+}
+
+/* ---------- Filtros ---------- */
+.explorar__filtros {
+  flex: 1 1 250px; max-width: 300px; min-width: 0;
+  display: flex; flex-direction: column; gap: 26px;
+  padding: var(--espacio-6);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-l);
+}
+
+.explorar__grupo { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--espacio-1); }
+.explorar__grupo legend {
+  padding: 0; margin-bottom: var(--espacio-3);
+  font-size: var(--texto-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--color-texto-suave);
+}
+
+.explorar__niveles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-2); }
+.explorar__niveles .pildora { border-radius: 10px; padding: 0 var(--espacio-2); }
+
+.explorar__casilla { display: flex; align-items: center; gap: var(--espacio-3); min-height: 40px; cursor: pointer; }
+.explorar__casilla input { width: 20px; height: 20px; margin: 0; accent-color: var(--color-marino); }
+.explorar__cantidad { margin-left: auto; font-size: 14px; color: var(--color-texto-suave); }
+
+.explorar__filtros .boton--enlace { align-self: flex-start; min-height: var(--alto-tactil); }
+
+/* ---------- Resultados ---------- */
+.explorar__resultados { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: var(--espacio-5); }
+
+.explorar__barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--espacio-3); }
+.explorar__resumen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+.explorar__etiqueta-orden { display: flex; align-items: center; gap: 10px; font-size: var(--texto-s); color: var(--color-texto-suave); }
+.explorar__orden {
+  min-height: var(--alto-tactil); padding: 0 var(--espacio-3);
+  border: 1px solid var(--color-borde-fuerte); border-radius: 10px;
+  background: var(--color-superficie); color: var(--color-texto);
+}
+
+@media (max-width: 860px) {
+  .explorar__filtros { max-width: none; flex-basis: 100%; }
+}

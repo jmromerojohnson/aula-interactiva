@@ -1,0 +1,13 @@
+/* PIEZA: Acceso a una asignatura */
+
+.tarjeta-asignatura {
+  display: flex; flex-direction: column; gap: 14px;
+  padding: var(--espacio-5);
+  border-radius: var(--radio-l);
+  text-decoration: none; color: var(--color-marino);
+  transition: transform var(--transicion);
+}
+.tarjeta-asignatura:hover { transform: translateY(-2px); color: var(--color-marino); }
+.tarjeta-asignatura .icono { stroke-width: 1.8; }
+.tarjeta-asignatura__nombre { font-weight: 700; font-size: 18px; }
+.tarjeta-asignatura__cantidad { font-size: 14px; color: var(--color-texto-suave); }

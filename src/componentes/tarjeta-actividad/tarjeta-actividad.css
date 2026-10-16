@@ -1,0 +1,39 @@
+/* PIEZA: Tarjeta de actividad */
+
+.tarjeta {
+  display: flex; flex-direction: column;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-l);
+  overflow: hidden;
+  text-decoration: none; color: var(--color-texto);
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+.tarjeta:hover { transform: translateY(-3px); box-shadow: var(--sombra-media); color: var(--color-texto); }
+
+.tarjeta__imagen {
+  position: relative; height: 170px;
+  display: flex; align-items: center; justify-content: center;
+}
+.tarjeta__foto { width: 100%; height: 100%; object-fit: cover; }
+.tarjeta__dibujo { display: flex; }
+.tarjeta__dibujo .icono { stroke-width: 1.4; }
+.tarjeta__asignatura { position: absolute; top: var(--espacio-3); left: var(--espacio-3); }
+
+.tarjeta__cuerpo {
+  flex: 1 1 auto;
+  display: flex; flex-direction: column; gap: var(--espacio-2);
+  padding: 18px var(--espacio-5) var(--espacio-5);
+}
+.tarjeta__titulo { font-size: var(--titulo-s); line-height: 1.2; }
+.tarjeta__descripcion { font-size: var(--texto-s); color: var(--color-texto-suave); }
+.tarjeta__etiquetas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+
+.tarjeta__pie {
+  margin-top: auto; padding-top: 14px;
+  border-top: 1px solid var(--color-superficie-suave);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3);
+}
+.tarjeta__autor { font-size: var(--texto-xs); color: var(--color-texto-suave); }
+.tarjeta__accion { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: var(--texto-s); color: var(--color-marino); }

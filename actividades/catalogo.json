@@ -1,22 +1,23 @@
 [
   {
-    "archivo": "vertebrados-3basico.html",
+    "id": "vertebrados-3basico",
     "titulo": "Animales vertebrados",
-    "asignatura": "Ciencias Naturales",
-    "nivel": "3° básico",
+    "asignatura": "ciencias",
+    "niveles": [3],
     "tipo": "Clasificar",
     "autor": "José Miguel",
     "fecha": "2026-10-14",
     "descripcion": "Clasificar 10 animales en mamíferos, aves, reptiles, anfibios y peces."
   },
   {
-    "archivo": "la-gran-aventura-3-4basico.html",
+    "id": "la-gran-aventura-3-4basico",
     "titulo": "La gran aventura: ¡Volvamos a la casa del Padre!",
-    "asignatura": "Religión",
-    "nivel": "3° y 4° básico",
+    "asignatura": "religion",
+    "niveles": [3, 4],
     "tipo": "Cuento interactivo",
     "autor": "José Miguel",
     "fecha": "2026-10-16",
-    "descripcion": "Recorrido ilustrado por la parábola del hijo pródigo para descubrir que Dios es un Padre misericordioso que siempre nos espera."
+    "descripcion": "Recorrido ilustrado por la parábola del hijo pródigo para descubrir que Dios es un Padre misericordioso que siempre nos espera.",
+    "portada": "imagenes/partida.jpg"
   }
 ]

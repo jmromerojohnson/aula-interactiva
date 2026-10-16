@@ -1,0 +1,30 @@
+/* ==========================================================
+   HOJA DE ESTILOS PRINCIPAL
+   Es la única que cargan las páginas. Solo junta las demás, en orden:
+   1. tipografías  2. materiales  3. base  4. piezas  5. páginas
+   Al crear una pieza o página nueva, agrega aquí su archivo .css.
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,600;0,700;0,800;1,600&family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@700;800&display=swap');
+
+@import url('tokens.css');
+@import url('base.css');
+
+/* Piezas */
+@import url('../componentes/boton/boton.css');
+@import url('../componentes/etiqueta/etiqueta.css');
+@import url('../componentes/encabezado/encabezado.css');
+@import url('../componentes/pie/pie.css');
+@import url('../componentes/buscador/buscador.css');
+@import url('../componentes/estado-vacio/estado-vacio.css');
+@import url('../componentes/tarjeta-actividad/tarjeta-actividad.css');
+@import url('../componentes/tarjeta-asignatura/tarjeta-asignatura.css');
+@import url('../componentes/marco-actividad/marco-actividad.css');
+@import url('../componentes/puntaje-casas/puntaje-casas.css');
+@import url('../componentes/temporizador/temporizador.css');
+
+/* Páginas */
+@import url('../paginas/portada/portada.css');
+@import url('../paginas/explorar/explorar.css');
+@import url('../paginas/sala/sala.css');
+@import url('../paginas/piezas/piezas.css');

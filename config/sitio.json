@@ -1,0 +1,26 @@
+{
+  "nombre": "Aula Interactiva",
+  "subtitulo": "Primer Ciclo · Colegio Cordillera",
+  "pie": "Aula Interactiva · Subdirección Primer Ciclo · Colegio Cordillera",
+  "aviso": "Este sitio no guarda datos de alumnos.",
+
+  "modulos": [
+    { "id": "inicio", "nombre": "Inicio", "ruta": "index.html", "activo": true, "enMenu": true },
+    { "id": "explorar", "nombre": "Explorar", "ruta": "explorar.html", "activo": true, "enMenu": true },
+    { "id": "plantillas", "nombre": "Plantillas", "ruta": "index.html#plantillas", "activo": true, "enMenu": true },
+    { "id": "aprende", "nombre": "Aprende a crear", "ruta": "index.html#aprende", "activo": true, "enMenu": true },
+    { "id": "sala", "nombre": "Sala", "ruta": "sala.html", "activo": true, "enMenu": false },
+    { "id": "piezas", "nombre": "Piezas del sitio", "ruta": "piezas.html", "activo": true, "enMenu": false }
+  ],
+
+  "accionPrincipal": { "texto": "Subir actividad", "ruta": "index.html#aprende", "icono": "mas" },
+
+  "niveles": [1, 2, 3, 4],
+
+  "casas": [
+    { "id": "condor", "nombre": "Cóndor", "color": "#23804F" },
+    { "id": "aguilas", "nombre": "Águilas", "color": "#2C6BD3" },
+    { "id": "pumas", "nombre": "Pumas", "color": "#FFFFFF" },
+    { "id": "linces", "nombre": "Linces", "color": "#C2373B" }
+  ]
+}

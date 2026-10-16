@@ -1,0 +1,60 @@
+/* PIEZA: Puntaje por casas (pensado para fondo oscuro de la sala) */
+
+.puntaje-casas {
+  display: flex; align-items: center; gap: var(--espacio-3);
+  padding: 14px var(--espacio-5);
+  background: var(--color-marino);
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  color: var(--color-texto-claro);
+}
+
+.puntaje-casas__lista {
+  flex: 1 1 auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.puntaje-casas__casa {
+  display: flex; align-items: center; gap: var(--espacio-3);
+  padding: 10px var(--espacio-3) 10px var(--espacio-4);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  transition: background var(--transicion), border-color var(--transicion);
+}
+.puntaje-casas__casa--lider { background: rgba(224, 164, 58, .18); border-color: var(--color-dorado); }
+
+.puntaje-casas__color {
+  width: 16px; height: 16px; flex: none;
+  border-radius: var(--radio-pildora);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .15);
+}
+
+.puntaje-casas__nombre {
+  flex: 1 1 auto;
+  font-family: var(--letra-sala); font-weight: 800; font-size: var(--titulo-s); line-height: 1;
+}
+
+.puntaje-casas__puntos {
+  min-width: 52px; text-align: center;
+  font-family: var(--letra-sala); font-weight: 800; font-size: 36px; line-height: 1;
+}
+
+.puntaje-casas__boton {
+  width: var(--alto-tactil); height: var(--alto-tactil); flex: none;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: transparent; color: var(--color-texto-claro);
+}
+.puntaje-casas__boton:hover { background: rgba(255, 255, 255, .1); }
+.puntaje-casas__boton--sumar { border-color: var(--color-dorado); background: var(--color-dorado); color: var(--color-tinta-calida); }
+.puntaje-casas__boton--sumar:hover { background: #EBB451; }
+
+@media (max-width: 640px) {
+  .puntaje-casas { padding: var(--espacio-2) var(--espacio-3); gap: var(--espacio-2); align-items: flex-end; }
+  .puntaje-casas__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-2); }
+  .puntaje-casas__casa { flex-wrap: wrap; gap: 6px; padding: var(--espacio-2); }
+  .puntaje-casas__nombre { flex-basis: calc(100% - 26px); font-size: var(--texto-m); }
+  .puntaje-casas__puntos { flex: 1 1 auto; min-width: 0; font-size: 26px; }
+}

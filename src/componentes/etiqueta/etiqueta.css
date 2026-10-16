@@ -1,0 +1,57 @@
+/* PIEZA: Etiquetas y píldoras
+   .etiqueta              dato pequeño (nivel, tipo)
+   .etiqueta--sobre-imagen  asignatura encima de una foto
+   .etiqueta--destacada   dorada ("Destacada de la semana")
+   .pildora               opción redonda que se puede tocar (niveles)
+   .pildora[aria-pressed="true"]  opción elegida
+   .filtro-activo         filtro aplicado con botón para quitarlo */
+
+.etiqueta {
+  display: inline-flex; align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radio-s);
+  background: var(--color-superficie-suave);
+  color: var(--color-texto-medio);
+  font-size: var(--texto-xs); font-weight: 700;
+}
+
+.etiqueta--sobre-imagen {
+  border-radius: var(--radio-pildora);
+  background: rgba(255, 255, 255, .92);
+}
+
+.etiqueta--destacada {
+  border-radius: var(--radio-pildora);
+  padding: 6px 12px;
+  background: var(--color-dorado); color: var(--color-tinta-calida);
+  letter-spacing: .06em; text-transform: uppercase;
+}
+
+.pildora {
+  min-height: var(--alto-tactil);
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 18px;
+  border: 1px solid var(--color-borde-fuerte);
+  border-radius: var(--radio-pildora);
+  background: var(--color-superficie);
+  color: var(--color-marino);
+  font-weight: 700; text-decoration: none;
+  transition: background var(--transicion), border-color var(--transicion);
+}
+.pildora:hover { border-color: var(--color-marino); color: var(--color-marino); }
+.pildora[aria-pressed="true"] { background: var(--color-marino); border-color: var(--color-marino); color: var(--color-texto-claro); }
+
+.filtro-activo {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 4px 4px 14px;
+  border-radius: var(--radio-pildora);
+  background: var(--color-marino); color: var(--color-texto-claro);
+  font-size: 14px; font-weight: 700;
+}
+.filtro-activo button {
+  width: 32px; height: 32px; padding: 0;
+  border: 0; border-radius: var(--radio-pildora);
+  background: rgba(255, 255, 255, .18); color: var(--color-texto-claro);
+  display: flex; align-items: center; justify-content: center;
+}
+.filtro-activo button:hover { background: rgba(255, 255, 255, .3); }

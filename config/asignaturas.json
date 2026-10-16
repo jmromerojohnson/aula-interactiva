@@ -1,0 +1,8 @@
+[
+  { "id": "lenguaje", "nombre": "Lenguaje", "color": "#2C6BD3", "fondo": "#E8EEF9", "icono": "libro" },
+  { "id": "matematica", "nombre": "Matemática", "color": "#B4561F", "fondo": "#FBEDE3", "icono": "calculo" },
+  { "id": "ciencias", "nombre": "Ciencias Naturales", "color": "#23804F", "fondo": "#E3F1E8", "icono": "hoja" },
+  { "id": "historia", "nombre": "Historia", "color": "#6B4FA8", "fondo": "#F0EBF7", "icono": "mundo" },
+  { "id": "religion", "nombre": "Religión", "color": "#9A6514", "fondo": "#F8EEDA", "icono": "cruz" },
+  { "id": "ingles", "nombre": "Inglés", "color": "#1F7A8C", "fondo": "#E4F1F3", "icono": "dialogo" }
+]

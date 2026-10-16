@@ -1,0 +1,26 @@
+/* PIEZA: Temporizador */
+
+.temporizador { position: relative; }
+
+.temporizador__tiempo {
+  font-family: var(--letra-sala); font-size: var(--titulo-s); line-height: 1;
+  font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: left;
+}
+
+.temporizador--terminado .temporizador__boton {
+  background: var(--color-dorado); border-color: var(--color-dorado); color: var(--color-tinta-calida);
+  animation: temporizador-pulso 1s ease-in-out infinite;
+}
+@keyframes temporizador-pulso { 50% { transform: scale(1.06); } }
+
+.temporizador__panel {
+  position: absolute; right: 0; top: calc(100% + var(--espacio-2)); z-index: 20;
+  width: 260px;
+  display: flex; flex-direction: column; gap: var(--espacio-3);
+  padding: var(--espacio-4);
+  background: var(--color-superficie); color: var(--color-texto);
+  border-radius: var(--radio-l);
+  box-shadow: var(--sombra-fuerte);
+}
+.temporizador__titulo { font-weight: 700; }
+.temporizador__opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-2); }

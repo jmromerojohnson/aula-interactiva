@@ -1,0 +1,86 @@
+/* ==========================================================
+   BASE: reglas generales para todas las páginas.
+   Solo usa los materiales de tokens.css.
+   ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: var(--espacio-6); }
+
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--letra-texto);
+  font-size: var(--texto-m);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--letra-titulos);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-marino);
+}
+
+p { margin: 0; }
+img { max-width: 100%; display: block; }
+a { color: var(--color-marino); }
+a:hover { color: var(--color-marino-medio); }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+:focus-visible { outline: 3px solid var(--color-foco); outline-offset: 2px; }
+
+[hidden] { display: none !important; }
+
+/* Oculto a la vista, pero lo leen los lectores de pantalla */
+.solo-lector {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Enlace "Saltar al contenido" para quienes navegan con teclado */
+.saltar {
+  position: absolute; left: var(--espacio-4); top: -100px; z-index: 100;
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--color-marino); color: var(--color-texto-claro);
+  border-radius: var(--radio-m);
+}
+.saltar:focus { top: var(--espacio-4); color: var(--color-texto-claro); }
+
+/* ---------- Diagramación ---------- */
+.contenedor {
+  max-width: var(--ancho-contenido);
+  margin: 0 auto;
+  padding-left: var(--margen-lateral);
+  padding-right: var(--margen-lateral);
+}
+
+.seccion { padding-top: var(--espacio-14); padding-bottom: var(--espacio-14); }
+
+.seccion__cabecera {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: var(--espacio-3); margin-bottom: var(--espacio-6);
+}
+.seccion__titulo { font-size: var(--titulo-m); }
+.seccion__bajada { color: var(--color-texto-suave); margin-top: var(--espacio-1); }
+
+.antetitulo {
+  font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--color-dorado-oscuro);
+}
+
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--grilla-min, 270px), 1fr));
+  gap: var(--espacio-6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
