@@ -568,7 +568,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const res = window.__resources || {}, R = {};
-    IMGS.forEach(k => { R[k] = res['img-' + k] || ('assets/' + k + '.jpg'); });
+    IMGS.forEach(k => { R[k] = res['img-' + k] || ('la-gran-aventura/' + k + '.jpg'); });
     const s = this.state, st = this.curStep();
     const scr = s.screen;
     let img = null, moodKey = 'bright';
