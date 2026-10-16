@@ -75,6 +75,7 @@ function montarSala(main, sitio, a) {
       crearMarcoActividad({
         url: a.url,
         titulo: a.titulo,
+        confiable: a.confiable === true,
         alResultado: (datos) => document.dispatchEvent(new CustomEvent('aula-resultado', { detail: datos }))
       })
     ),

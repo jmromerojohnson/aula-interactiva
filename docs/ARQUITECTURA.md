@@ -93,6 +93,7 @@ Tipos de sección disponibles: `recientes`, `asignaturas`, `plantillas`, `aprend
      "descripcion": "Diez sumas con apoyo visual.", "portada": "imagenes/portada.jpg" }
    ```
    `asignatura` es el `id` de `config/asignaturas.json`. `portada` es opcional: sin ella, la tarjeta muestra el ícono de la asignatura.
+   Si la actividad viene de Claude Design (usa `../_comun/support.js`), agrega `"confiable": true` después de revisarla (ver *Seguridad y datos*).
 
 ### Agregar una asignatura
 Una línea en `config/asignaturas.json` con su `id`, `nombre`, `color`, `fondo` e `icono` (ver nombres en `piezas.html`).
@@ -117,6 +118,7 @@ Una línea en `TRAZOS` de `src/nucleo/iconos.js` (dibujo SVG de 24×24 con trazo
 
 - El repositorio es **público**: nunca guardes datos de alumnos, contraseñas ni correos personales.
 - Las actividades corren **aisladas** (`marco-actividad`: iframe con sandbox). No pueden leer datos del sitio.
+- **Excepción `"confiable": true`** (en `catalogo.json`): las actividades hechas con Claude Design necesitan correr como parte del sitio o su motor no arranca. Ese permiso les deja leer lo que el sitio guarda en el navegador, así que **solo se marca en actividades revisadas por el colegio**. Cuando exista el ingreso con cuenta (etapa 2), revisar esta regla antes de marcar actividades nuevas.
 - Una actividad puede avisar su puntaje con
   `window.parent.postMessage({ tipo: "aula-resultado", actividad, puntaje, total }, "*")`.
   La sala lo recibe como evento `aula-resultado`; en la etapa 2 se guardará en la planilla del colegio.

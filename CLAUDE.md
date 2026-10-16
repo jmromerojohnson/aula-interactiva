@@ -50,7 +50,7 @@ Cuando José Miguel te entregue una actividad (HTML suelto, zip de Claude Design
    ```json
    {"id": "vertebrados-3basico", "titulo": "Animales vertebrados", "asignatura": "ciencias", "niveles": [3], "tipo": "Clasificar", "autor": "José Miguel", "fecha": "2026-10-14", "descripcion": "Clasificar 10 animales en mamíferos, aves, reptiles, anfibios y peces.", "portada": "imagenes/portada.jpg"}
    ```
-   `asignatura` es un id de `config/asignaturas.json`; `portada` es opcional. Si falta algún dato (asignatura, nivel, autor), dedúcelo del contenido y confírmalo en tu respuesta.
+   `asignatura` es un id de `config/asignaturas.json`; `portada` es opcional. Si viene de Claude Design, agrega `"confiable": true` solo después de la revisión del paso 4 (sin eso su motor no arranca dentro de la sala; ver *Seguridad y datos* en `docs/ARQUITECTURA.md`). Si falta algún dato (asignatura, nivel, autor), dedúcelo del contenido y confírmalo en tu respuesta.
 6. **Publica:** commit `Agrega actividad: <título>`, push a `main`.
 7. **Responde** con el enlace a la sala (`sala.html?a=<id>`) y a la portada, y recuerda que tarda 1–2 minutos en aparecer.
 

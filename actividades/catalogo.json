@@ -18,6 +18,7 @@
     "autor": "José Miguel",
     "fecha": "2026-10-16",
     "descripcion": "Recorrido ilustrado por la parábola del hijo pródigo para descubrir que Dios es un Padre misericordioso que siempre nos espera.",
-    "portada": "imagenes/partida.jpg"
+    "portada": "imagenes/partida.jpg",
+    "confiable": true
   }
 ]
