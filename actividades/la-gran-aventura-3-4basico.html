@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="la-gran-aventura/eden.jpg" data-resource-id="img-eden">
+<meta name="ext-resource-dependency" content="la-gran-aventura/promesa.jpg" data-resource-id="img-promesa">
+<meta name="ext-resource-dependency" content="la-gran-aventura/partida.jpg" data-resource-id="img-partida">
+<meta name="ext-resource-dependency" content="la-gran-aventura/cerdos.jpg" data-resource-id="img-cerdos">
+<meta name="ext-resource-dependency" content="la-gran-aventura/regreso.jpg" data-resource-id="img-regreso">
+<meta name="ext-resource-dependency" content="la-gran-aventura/abrazo.jpg" data-resource-id="img-abrazo">
+<meta name="ext-resource-dependency" content="la-gran-aventura/fiesta.jpg" data-resource-id="img-fiesta">
+<template id="__bundler_thumbnail" data-bg-color="#2a2016"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#2a2016"/><circle cx="50" cy="50" r="20" fill="#e0a43a"/></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>La gran aventura — ¡Volvamos a la casa del Padre!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,800;1,500;1,700&amp;family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0;background:#120d08;overflow:hidden}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer;border:0}
+a{color:#e0a43a}a:hover{color:#f3c56b}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.85)}60%{opacity:1;transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes pulse{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+@keyframes halo{0%,100%{box-shadow:0 0 0 0 rgba(224,164,58,.55),0 0 50px rgba(224,164,58,.45)}50%{box-shadow:0 0 0 18px rgba(224,164,58,0),0 0 80px rgba(224,164,58,.7)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes burst{0%{transform:translate(0,0) rotate(45deg) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(240deg) scale(.3);opacity:0}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(-30px)}}
+</style>
+</helmet>
+<div style="position:fixed;inset:0;background:#120d08;overflow:hidden;font-family:Nunito,system-ui,sans-serif">
+<div ref="{{ stageRef }}" style="position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale({{ scale }});overflow:hidden;background:#2a2016;color:#2a2016">
+
+  <!-- ILLUSTRATION LAYER: 7 main illustrations, reused across screens -->
+  <div style="position:absolute;inset:0;filter:{{ imgFilter }};transition:filter 2.4s ease">
+    <div style="position:absolute;inset:0;opacity:{{ L.eden.op }};pointer-events:{{ L.eden.pe }};transform:scale({{ L.eden.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 70% 20%,#fff1c4 0%,rgba(255,241,196,0) 45%),linear-gradient(180deg,#a9cfa0 0%,#6f9f63 55%,#3f6b3d 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="eden" shape="rect" src="{{ R.eden }}" placeholder="ILUSTRACIÓN 1 · El jardín del Edén — paisaje amplio y luminoso: árboles frutales, río, animales en paz. Arbustos a la izquierda, gran árbol en el centro-izquierda, Adán y Eva (pequeños, vestidos con dignidad) en el centro-derecha. Luz dorada de mañana. Dios solo como luz, sin figura humana."></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;opacity:{{ L.promesa.op }};pointer-events:{{ L.promesa.pe }};transform:scale({{ L.promesa.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 60% 30%,#ffe0a3 0%,rgba(255,224,163,0) 50%),linear-gradient(180deg,#7d86a8 0%,#c79a7a 60%,#5b4a3e 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="promesa" shape="rect" src="{{ R.promesa }}" placeholder="ILUSTRACIÓN 2 · La gran promesa — Adán y Eva fuera del jardín, de espaldas, mirando el horizonte. Las nubes grises se abren y un rayo de luz cálida cae sobre la tierra; a sus pies brota una flor junto a una serpiente vencida (Gn 3,15). De la tristeza a la esperanza."></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;opacity:{{ L.partida.op }};pointer-events:{{ L.partida.pe }};transform:scale({{ L.partida.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 20% 30%,#ffe7b8 0%,rgba(255,231,184,0) 45%),linear-gradient(180deg,#9cc2d8 0%,#d8bf8e 58%,#8a6a45 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="partida" shape="rect" src="{{ R.partida }}" placeholder="ILUSTRACIÓN 3 · El hijo se aleja — joven de cabello castaño rizado, túnica azul y faja roja, con una bolsa de monedas llena, camina por un sendero hacia la derecha. Al fondo izquierdo, pequeña, la casa de piedra del padre; el padre en la puerta mirándolo partir."></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;opacity:{{ L.cerdos.op }};pointer-events:{{ L.cerdos.pe }};transform:scale({{ L.cerdos.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 75% 35%,#f1c99a 0%,rgba(241,201,154,0) 45%),linear-gradient(180deg,#b9a6a0 0%,#a98a68 55%,#5e4632 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="cerdos" shape="rect" src="{{ R.cerdos }}" placeholder="ILUSTRACIÓN 4 · El hijo cuida cerdos — el mismo joven, túnica azul ya gastada, sentado pensativo junto a un corral con cerdos. Bolsa de monedas vacía en primer plano izquierdo; recipiente sin comida abajo al centro-izquierda; camino que se pierde en la distancia al centro. Atardecer suave, nada grotesco."></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;opacity:{{ L.regreso.op }};pointer-events:{{ L.regreso.pe }};transform:scale({{ L.regreso.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 62% 42%,#fff0c2 0%,rgba(255,240,194,0) 40%),linear-gradient(180deg,#f2c98d 0%,#d99a62 50%,#6b4a2c 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="regreso" shape="rect" src="{{ R.regreso }}" placeholder="ILUSTRACIÓN 5 · El camino de regreso (también portada) — el mismo joven, de espaldas, se pone en camino por un sendero entre colinas y olivos hacia una casa acogedora con luz en las ventanas, al centro del horizonte. Amanecer cálido."></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;opacity:{{ L.abrazo.op }};pointer-events:{{ L.abrazo.pe }};transform:scale({{ L.abrazo.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 55% 40%,#fff3cf 0%,rgba(255,243,207,0) 45%),linear-gradient(180deg,#f6cf8e 0%,#e3a25e 55%,#7a4a2a 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="abrazo" shape="rect" src="{{ R.abrazo }}" placeholder="ILUSTRACIÓN 6 · El abrazo del Padre (escena principal) — el padre, de barba gris y manto granate, ha corrido por el camino y abraza con fuerza al hijo de túnica azul gastada. Abrazo grande en el centro-derecha, rostros con ternura y alivio. Casa al fondo, luz dorada de atardecer."></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;opacity:{{ L.fiesta.op }};pointer-events:{{ L.fiesta.pe }};transform:scale({{ L.fiesta.sc }});transition:opacity 1.2s ease,transform 16s ease-out;background:radial-gradient(ellipse at 50% 35%,#fff0c8 0%,rgba(255,240,200,0) 50%),linear-gradient(180deg,#e7a96a 0%,#b86d45 55%,#4b2c1c 100%);color:rgba(255,255,255,.92)">
+      <image-slot id="fiesta" shape="rect" src="{{ R.fiesta }}" placeholder="ILUSTRACIÓN 7 · La fiesta en la casa del Padre — patio iluminado con lámparas, mesa con pan y fruta, música y familia alegre. El hijo con manto nuevo, anillo y sandalias junto a su padre. Colores cálidos y festivos."></image-slot>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:{{ tint }};transition:background-color 2.4s ease"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;opacity:{{ glowOp }};transition:opacity 2.4s ease;background:radial-gradient(ellipse 60% 70% at 60% 30%,rgba(255,206,120,.35) 0%,rgba(255,206,120,0) 70%)"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(18,12,6,.55) 0%,rgba(18,12,6,0) 14%,rgba(18,12,6,0) 55%,rgba(18,12,6,.6) 100%)"></div>
+
+  <!-- COVER -->
+  <sc-if value="{{ isCover }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(24,15,6,.72) 0%,rgba(24,15,6,.35) 45%,rgba(24,15,6,0) 70%)"></div>
+    <div style="position:absolute;left:140px;top:0;bottom:0;width:1000px;display:flex;flex-direction:column;justify-content:center;gap:28px;pointer-events:none;animation:rise 1s ease both">
+      <div style="font-weight:800;font-size:26px;letter-spacing:.32em;color:#f3c56b;text-transform:uppercase;white-space:nowrap">Una aventura de la Biblia</div>
+      <h1 style="margin:0;font-family:Alegreya,serif;font-weight:800;font-size:168px;line-height:.92;color:#fff8ea;text-shadow:0 6px 40px rgba(0,0,0,.45);text-wrap:balance">La gran aventura</h1>
+      <div style="font-family:Alegreya,serif;font-style:italic;font-weight:700;font-size:66px;line-height:1.1;color:#f7d690;text-shadow:0 4px 24px rgba(0,0,0,.5)">¡Volvamos a la casa del Padre!</div>
+      <div style="display:flex;gap:24px;align-items:center;margin-top:40px;pointer-events:auto">
+        <button onClick="{{ startAdventure }}" style="background:#e0a43a;color:#2a1a08;font-weight:900;font-size:36px;letter-spacing:.06em;padding:30px 64px;border-radius:999px;white-space:nowrap;flex:none;box-shadow:0 10px 0 #a86f17,0 24px 50px rgba(0,0,0,.4);transition:transform .15s,filter .15s" style-hover="filter:brightness(1.08);transform:translateY(-2px)" style-active="transform:translateY(6px)">COMENZAR AVENTURA</button>
+        <sc-if value="{{ hasProgress }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ goMap }}" style="background:rgba(255,248,234,.14);color:#fff8ea;font-weight:800;font-size:26px;padding:24px 40px;border-radius:999px;white-space:nowrap;flex:none;border:2px solid rgba(255,248,234,.55);backdrop-filter:blur(6px)" style-hover="background:rgba(255,248,234,.26)">Seguir donde quedamos</button>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- INTRO -->
+  <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(20,13,6,.5);pointer-events:none"></div>
+    <div style="position:absolute;left:50%;top:50%;translate:-50% -50%;width:1340px;display:flex;flex-direction:column;align-items:center;gap:48px">
+      <div style="background:#f7efdf;border-radius:36px;padding:72px 88px;box-shadow:0 40px 90px rgba(0,0,0,.45);animation:pop .8s ease both;display:flex;flex-direction:column;gap:28px">
+        <div style="font-weight:900;font-size:26px;letter-spacing:.28em;color:#8a5a12;text-transform:uppercase;white-space:nowrap">Nuestra misión</div>
+        <p style="margin:0;font-family:Alegreya,serif;font-weight:500;font-size:50px;line-height:1.32;color:#2a2016;text-wrap:pretty">Hoy tenemos una misión. Vamos a acompañar a un hijo que se ha alejado de su padre. Para ayudarlo a encontrar el camino de vuelta, tendremos que descubrir qué ocurrió al principio de la historia de la humanidad, conocer una gran promesa y superar varios desafíos.</p>
+        <p style="margin:0;font-family:Alegreya,serif;font-weight:800;font-style:italic;font-size:60px;color:#8a5a12">¿Estamos preparados?</p>
+      </div>
+      <button onClick="{{ goMap }}" style="background:#e0a43a;color:#2a1a08;font-weight:900;font-size:36px;letter-spacing:.06em;padding:30px 64px;border-radius:999px;white-space:nowrap;flex:none;box-shadow:0 10px 0 #a86f17,0 24px 50px rgba(0,0,0,.4);animation:rise .8s .3s ease both" style-hover="filter:brightness(1.08)" style-active="transform:translateY(6px)">¡COMENZAR LA MISIÓN!</button>
+    </div>
+  </sc-if>
+
+  <!-- MAP -->
+  <sc-if value="{{ isMap }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,#fbf3e1 0%,rgba(251,243,225,0) 55%),radial-gradient(ellipse at 80% 85%,#e4cfa4 0%,rgba(228,207,164,0) 55%),linear-gradient(180deg,#f1e4c8 0%,#e8d5ae 100%);animation:fade .6s ease both">
+      <div style="position:absolute;inset:28px;border:3px solid rgba(138,90,18,.35);border-radius:28px;pointer-events:none"></div>
+      <div style="position:absolute;inset:40px;border:1px solid rgba(138,90,18,.25);border-radius:20px;pointer-events:none"></div>
+      <div style="position:absolute;left:120px;top:128px;display:flex;flex-direction:column;gap:6px">
+        <div style="font-weight:900;font-size:24px;letter-spacing:.3em;color:#8a5a12;text-transform:uppercase;white-space:nowrap">Mapa de la aventura</div>
+        <div style="font-family:Alegreya,serif;font-weight:800;font-size:64px;color:#2a2016">{{ mapTitle }}</div>
+      </div>
+      <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;inset:0;pointer-events:none">
+        <path d="M260 700 C 430 700, 450 430, 620 430 S 800 710, 960 710 S 1130 440, 1300 440 S 1490 650, 1660 650" fill="none" stroke="rgba(110,78,40,.18)" stroke-width="44" stroke-linecap="round"></path>
+        <path d="M260 700 C 430 700, 450 430, 620 430 S 800 710, 960 710 S 1130 440, 1300 440 S 1490 650, 1660 650" fill="none" stroke="#8a6a45" stroke-width="6" stroke-dasharray="4 18" stroke-linecap="round"></path>
+        <path d="M260 700 C 430 700, 450 430, 620 430 S 800 710, 960 710 S 1130 440, 1300 440 S 1490 650, 1660 650" fill="none" stroke="#e0a43a" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="{{ pathOffset }}" style="transition:stroke-dashoffset 1.6s ease;filter:drop-shadow(0 0 8px rgba(224,164,58,.7))"></path>
+      </svg>
+      <sc-for list="{{ medals }}" as="m" hint-placeholder-count="5">
+        <div style="position:absolute;left:{{ m.left }}px;top:{{ m.top }}px;width:240px;display:flex;flex-direction:column;align-items:center;gap:18px">
+          <sc-if value="{{ m.isCurrent }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:50%;top:-74px;translate:-50% 0;background:#2a2016;color:#f7d690;font-weight:900;font-size:22px;letter-spacing:.14em;padding:10px 20px;border-radius:999px;white-space:nowrap;flex:none;white-space:nowrap;animation:bob 1.8s ease-in-out infinite">ESTAMOS AQUÍ</div>
+          </sc-if>
+          <button onClick="{{ m.on }}" style="position:relative;width:240px;height:240px;border-radius:50%;padding:0;background:#efe2c6;border:10px solid {{ m.ring }};box-shadow:0 18px 40px rgba(60,40,15,.35);animation:{{ m.anim }};transition:transform .2s" style-hover="transform:scale(1.05)">
+            <div style="position:absolute;inset:0;border-radius:50%;overflow:hidden;filter:{{ m.filter }};color:rgba(42,32,22,.6)">
+              <image-slot id="{{ m.img }}" shape="circle" src="{{ m.src }}" placeholder="{{ m.name }}"></image-slot>
+            </div>
+            <div style="position:absolute;inset:0;border-radius:50%;background:{{ m.veil }};pointer-events:none"></div>
+            <div style="position:absolute;right:-6px;top:-6px;width:68px;height:68px;border-radius:50%;background:{{ m.badgeBg }};color:{{ m.badgeColor }};display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:38px;box-shadow:0 6px 14px rgba(0,0,0,.3);pointer-events:none">{{ m.badge }}</div>
+          </button>
+          <div style="text-align:center;display:flex;flex-direction:column;gap:4px;width:320px">
+            <div style="font-family:Alegreya,serif;font-weight:800;font-size:38px;line-height:1.05;color:#2a2016">{{ m.name }}</div>
+            <div style="font-weight:800;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:{{ m.statusColor }}">{{ m.status }}</div>
+          </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ lockedMsg }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;left:50%;bottom:170px;translate:-50% 0;background:#2a2016;color:#f7efdf;font-weight:800;font-size:28px;padding:20px 36px;border-radius:20px;animation:shake .4s ease">Esta etapa aún está cerrada. ¡Primero completemos la anterior!</div>
+      </sc-if>
+      <div style="position:absolute;left:120px;bottom:84px;font-family:Alegreya,serif;font-style:italic;font-size:34px;color:#5a4a38;max-width:900px">{{ mapHint }}</div>
+      <button onClick="{{ mapGo }}" style="position:absolute;right:110px;bottom:70px;background:#e0a43a;color:#2a1a08;font-weight:900;font-size:32px;padding:26px 52px;border-radius:999px;white-space:nowrap;flex:none;box-shadow:0 10px 0 #a86f17,0 20px 40px rgba(60,40,15,.35)" style-hover="filter:brightness(1.08)" style-active="transform:translateY(6px)">{{ mapGoLabel }}</button>
+    </div>
+  </sc-if>
+
+  <!-- STAGE STEPS -->
+  <sc-if value="{{ isNarr }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ step.instr }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:96px;top:130px;background:rgba(20,13,6,.62);backdrop-filter:blur(8px);color:#fff8ea;font-weight:800;font-size:30px;padding:16px 30px;border-radius:999px;white-space:nowrap;flex:none;animation:rise .7s .5s ease both;display:flex;gap:14px;align-items:center;pointer-events:none"><span style="width:14px;height:14px;border-radius:50%;background:#e0a43a;display:block"></span>{{ step.instr }}</div>
+    </sc-if>
+    <div style="position:absolute;left:96px;bottom:150px;width:1240px;background:rgba(250,243,228,.96);border-radius:32px;padding:44px 56px 40px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:rise .7s ease both;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:20px">
+        <div style="font-weight:900;font-size:24px;letter-spacing:.22em;color:#8a5a12;text-transform:uppercase;white-space:nowrap">{{ step.kicker }}</div>
+        <button onClick="{{ replay }}" style="background:transparent;color:#8a5a12;font-weight:800;font-size:20px;padding:8px 16px;border-radius:999px;white-space:nowrap;flex:none;border:2px solid rgba(138,90,18,.35)" style-hover="background:rgba(224,164,58,.15)">↻ Repetir explicación</button>
+      </div>
+      <p style="margin:0;font-family:Alegreya,serif;font-weight:500;font-size:48px;line-height:1.3;color:#2a2016;text-wrap:pretty">{{ step.text }}</p>
+      <sc-if value="{{ step.quote }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:24px;align-items:baseline;padding-top:18px;border-top:2px solid rgba(138,90,18,.2);animation:fade .8s .6s ease both">
+          <div style="font-family:Alegreya,serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.25;color:#6b4410">«{{ step.quote }}»</div>
+          <div style="font-weight:800;font-size:22px;color:#8a5a12;white-space:nowrap">{{ step.ref }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ step.chips }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:6px">
+          <sc-for list="{{ step.chips }}" as="c" hint-placeholder-count="3">
+            <div style="display:flex;gap:14px;align-items:center;background:#efe2c6;border-radius:18px;padding:16px 24px;font-weight:800;font-size:28px;color:#2a2016;animation:rise .6s ease both"><span style="width:44px;height:44px;border-radius:50%;background:#e0a43a;color:#2a1a08;display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:28px">{{ c.n }}</span>{{ c.t }}</div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isBig }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(20,13,6,.6) 0%,rgba(20,13,6,0) 70%);pointer-events:none"></div>
+    <div style="position:absolute;left:120px;top:250px;width:1100px;display:flex;flex-direction:column;gap:30px;pointer-events:none;animation:rise 1s ease both">
+      <div style="font-weight:900;font-size:26px;letter-spacing:.28em;color:#f7d690;text-transform:uppercase;white-space:nowrap">{{ step.kicker }}</div>
+      <div style="font-family:Alegreya,serif;font-style:italic;font-weight:700;font-size:96px;line-height:1.08;color:#fff8ea;text-shadow:0 6px 40px rgba(0,0,0,.5);text-wrap:balance">«{{ step.quote }}»</div>
+      <div style="font-weight:800;font-size:34px;color:#f7d690">{{ step.ref }}</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isHot }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:96px;top:130px;background:rgba(20,13,6,.62);backdrop-filter:blur(8px);color:#fff8ea;font-weight:800;font-size:30px;padding:16px 30px;border-radius:999px;white-space:nowrap;flex:none;display:flex;gap:18px;align-items:center;animation:rise .6s ease both;pointer-events:none">{{ step.instr }}<span style="background:#e0a43a;color:#2a1a08;border-radius:999px;white-space:nowrap;flex:none;padding:4px 16px;font-weight:900">{{ foundCount }} / 3</span></div>
+    <sc-for list="{{ spots }}" as="s" hint-placeholder-count="3">
+      <button onClick="{{ s.on }}" aria-label="{{ s.title }}" style="position:absolute;left:{{ s.x }}%;top:{{ s.y }}%;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;background:transparent;padding:0;display:flex;align-items:center;justify-content:center" style-hover="transform:scale(1.08)">
+        <sc-if value="{{ s.open }}" hint-placeholder-val="{{ true }}">
+          <span style="position:absolute;inset:18px;border-radius:50%;border:4px solid rgba(255,236,190,.95);animation:pulse 2.2s ease-out infinite"></span>
+          <span style="position:absolute;inset:18px;border-radius:50%;border:4px solid rgba(255,236,190,.95);animation:pulse 2.2s 1.1s ease-out infinite"></span>
+          <span style="width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#fff6dc 0%,#f3c56b 60%,rgba(243,197,107,0) 100%);box-shadow:0 0 30px rgba(255,220,150,.9)"></span>
+        </sc-if>
+        <sc-if value="{{ s.found }}" hint-placeholder-val="{{ false }}">
+          <span style="width:76px;height:76px;border-radius:50%;background:#e0a43a;color:#2a1a08;display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:44px;box-shadow:0 0 0 6px rgba(255,248,234,.85),0 10px 24px rgba(0,0,0,.35);animation:pop .5s ease both">{{ s.n }}</span>
+        </sc-if>
+      </button>
+    </sc-for>
+    <div style="position:absolute;left:{{ panelL }};right:{{ panelR }};top:{{ panelT }};width:{{ panelW }};display:flex;flex-direction:column;gap:{{ panelGap }}">
+      <sc-for list="{{ spots }}" as="s" hint-placeholder-count="3">
+        <div style="background:{{ s.cardBg }};border-radius:26px;padding:26px 30px;box-shadow:0 18px 40px rgba(0,0,0,.3);display:flex;gap:20px;align-items:flex-start;animation:{{ s.cardAnim }};border:2px dashed {{ s.cardBd }}">
+          <span style="flex:none;width:58px;height:58px;border-radius:50%;background:{{ s.numBg }};color:#2a1a08;display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:34px">{{ s.n }}</span>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-weight:900;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:{{ s.titleColor }}">{{ s.cardTitle }}</div>
+            <div style="font-family:Alegreya,serif;font-weight:700;font-size:34px;line-height:1.22;color:{{ s.textColor }}">{{ s.cardText }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCards }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(20,13,6,.42);pointer-events:none"></div>
+    <div style="position:absolute;left:0;right:0;top:150px;text-align:center;font-family:Alegreya,serif;font-weight:800;font-size:60px;color:#fff8ea;text-shadow:0 4px 24px rgba(0,0,0,.5);animation:rise .6s ease both">{{ step.instr }}</div>
+    <div style="position:absolute;left:0;right:0;top:300px;display:flex;justify-content:center;gap:48px">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="3">
+        <button onClick="{{ c.on }}" style="position:relative;width:480px;height:420px;border-radius:30px;background:{{ c.bg }};padding:48px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:{{ c.op }};transform:scale({{ c.sc }});box-shadow:{{ c.shadow }};transition:all .5s ease;animation:rise .6s ease both;text-align:center">
+          <span style="width:84px;height:84px;border-radius:50%;background:{{ c.sealBg }};color:#fff8ea;display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:46px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.2)">{{ c.l }}</span>
+          <span style="font-family:Alegreya,serif;font-weight:700;font-size:44px;line-height:1.2;color:#2a2016;text-wrap:balance">{{ c.text }}</span>
+          <sc-if value="{{ c.note }}" hint-placeholder-val="{{ false }}">
+            <span style="font-weight:800;font-size:24px;color:#6b4410;animation:fade .4s ease both">{{ c.note }}</span>
+          </sc-if>
+        </button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ solved }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:50%;top:770px;translate:-50% 0;background:#f7efdf;border:4px solid #e0a43a;border-radius:28px;padding:28px 48px;font-family:Alegreya,serif;font-weight:800;font-size:44px;color:#2a2016;box-shadow:0 0 60px rgba(224,164,58,.6);animation:pop .7s ease both;white-space:nowrap">{{ step.win }}</div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ isPaths }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ pathsOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;background:rgba(20,13,6,.4);pointer-events:none"></div>
+      <div style="position:absolute;left:0;right:0;top:150px;text-align:center;font-family:Alegreya,serif;font-weight:800;font-size:64px;color:#fff8ea;text-shadow:0 4px 24px rgba(0,0,0,.5);animation:rise .6s ease both">{{ step.instr }}</div>
+      <div style="position:absolute;left:0;right:0;top:310px;display:flex;justify-content:center;gap:44px">
+        <sc-for list="{{ paths }}" as="p" hint-placeholder-count="3">
+          <button onClick="{{ p.on }}" style="width:500px;height:470px;border-radius:30px;background:#f7efdf;padding:40px 40px 36px;display:flex;flex-direction:column;gap:22px;text-align:left;opacity:{{ p.op }};box-shadow:0 24px 50px rgba(0,0,0,.4);border-top:18px solid {{ p.top }};transition:all .4s ease;animation:rise .6s ease both" style-hover="transform:translateY(-6px)">
+            <span style="font-weight:900;font-size:26px;letter-spacing:.2em;text-transform:uppercase;color:#8a5a12">{{ p.label }}</span>
+            <span style="font-family:Alegreya,serif;font-weight:700;font-size:46px;line-height:1.18;color:#2a2016;text-wrap:pretty">{{ p.text }}</span>
+            <sc-if value="{{ p.note }}" hint-placeholder-val="{{ false }}">
+              <span style="margin-top:auto;background:#fbecc8;border-radius:16px;padding:14px 18px;font-weight:800;font-size:24px;line-height:1.3;color:#5a3a0a;animation:fade .4s ease both">{{ p.note }}</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ solved }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:96px;bottom:150px;max-width:1240px;background:rgba(250,243,228,.96);border-radius:32px;padding:40px 56px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:rise 1s .6s ease both;display:flex;flex-direction:column;gap:12px">
+        <div style="font-weight:900;font-size:24px;letter-spacing:.22em;color:#4f8a5b;text-transform:uppercase;white-space:nowrap">¡Camino correcto!</div>
+        <div style="font-family:Alegreya,serif;font-weight:800;font-size:54px;line-height:1.2;color:#2a2016">{{ step.win }}</div>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(20,13,6,.5);backdrop-filter:blur(5px);animation:fade .5s ease both"></div>
+    <div style="position:absolute;left:50%;top:120px;translate:-50% 0;width:1480px;background:#f7efdf;border-radius:36px;padding:44px 60px 40px;box-shadow:0 40px 90px rgba(0,0,0,.45);display:flex;flex-direction:column;gap:22px;animation:pop .6s ease both">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-weight:900;font-size:24px;letter-spacing:.22em;color:#8a5a12;text-transform:uppercase;white-space:nowrap">{{ quizKicker }}</div>
+        <sc-if value="{{ showHintBtn }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ showHint }}" style="background:transparent;color:#8a5a12;font-weight:800;font-size:20px;padding:8px 16px;border-radius:999px;white-space:nowrap;flex:none;border:2px solid rgba(138,90,18,.35)" style-hover="background:rgba(224,164,58,.15)">Mostrar una pista</button>
+        </sc-if>
+      </div>
+      <div style="font-family:Alegreya,serif;font-weight:800;font-size:58px;line-height:1.15;color:#2a2016;text-wrap:balance">{{ step.q }}</div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-for list="{{ opts }}" as="o" hint-placeholder-count="3">
+          <button onClick="{{ o.on }}" style="display:flex;align-items:center;gap:26px;text-align:left;background:{{ o.bg }};border:4px solid {{ o.bd }};border-radius:24px;padding:18px 28px;opacity:{{ o.op }};transform:scale({{ o.sc }});transition:all .35s ease;box-shadow:{{ o.shadow }}" style-hover="filter:brightness(1.03)">
+            <span style="flex:none;width:64px;height:64px;border-radius:50%;background:{{ o.lBg }};color:{{ o.lColor }};display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:38px">{{ o.l }}</span>
+            <span style="flex:1;font-weight:800;font-size:36px;line-height:1.2;color:#2a2016">{{ o.text }}</span>
+            <sc-if value="{{ o.tag }}" hint-placeholder-val="{{ false }}">
+              <span style="flex:none;font-weight:800;font-size:22px;color:{{ o.tagColor }};background:{{ o.tagBg }};padding:8px 16px;border-radius:999px;white-space:nowrap;flex:none">{{ o.tag }}</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ showHintBox }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:18px;align-items:flex-start;background:#fbecc8;border-radius:22px;padding:22px 28px;animation:rise .5s ease both">
+          <span style="flex:none;font-weight:900;font-size:22px;letter-spacing:.14em;color:#8a5a12;text-transform:uppercase;white-space:nowrap;padding-top:8px">Pista</span>
+          <span style="flex:1;min-width:0;font-family:Alegreya,serif;font-weight:700;font-size:36px;line-height:1.25;color:#3d2a10">{{ step.hint }}</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ solved }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;background:#e3efd9;border-radius:22px;padding:24px 30px;animation:rise .6s .15s ease both">
+          <div style="font-family:Alegreya,serif;font-weight:700;font-size:38px;line-height:1.25;color:#1f3a24">{{ step.win }}</div>
+          <sc-if value="{{ step.extra }}" hint-placeholder-val="{{ false }}">
+            <div style="font-family:Alegreya,serif;font-style:italic;font-weight:500;font-size:32px;line-height:1.3;color:#2d4a31">{{ step.extra }}</div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isOral }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(20,13,6,.55);pointer-events:none;animation:fade .5s ease both"></div>
+    <div style="position:absolute;left:50%;top:150px;translate:-50% 0;width:1440px;display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center;animation:rise .7s ease both">
+      <div style="display:flex;gap:14px;align-items:center;background:#e0a43a;color:#2a1a08;font-weight:900;font-size:26px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;padding:14px 30px;border-radius:999px;white-space:nowrap;flex:none">{{ step.kicker }}</div>
+      <sc-if value="{{ step.situation }}" hint-placeholder-val="{{ false }}">
+        <div style="background:rgba(250,243,228,.96);border-radius:28px;padding:32px 48px;font-family:Alegreya,serif;font-style:italic;font-weight:500;font-size:42px;line-height:1.3;color:#2a2016;max-width:1300px">{{ step.situation }}</div>
+      </sc-if>
+      <div style="font-family:Alegreya,serif;font-weight:800;font-size:78px;line-height:1.1;color:#fff8ea;text-shadow:0 4px 30px rgba(0,0,0,.5);text-wrap:balance">{{ step.q }}</div>
+      <div style="font-weight:800;font-size:30px;color:#f7d690">{{ step.instr }}</div>
+      <sc-if value="{{ showRevealBtn }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ doReveal }}" style="background:rgba(255,248,234,.14);color:#fff8ea;font-weight:800;font-size:28px;padding:20px 40px;border-radius:999px;white-space:nowrap;flex:none;border:2px solid rgba(255,248,234,.6)" style-hover="background:rgba(255,248,234,.26)">Ya conversamos: mostrar la conclusión</button>
+      </sc-if>
+      <sc-if value="{{ reveal }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#f7efdf;border:4px solid #e0a43a;border-radius:28px;padding:32px 48px;font-family:Alegreya,serif;font-weight:700;font-size:42px;line-height:1.3;color:#2a2016;box-shadow:0 0 70px rgba(224,164,58,.55);max-width:1300px;animation:pop .7s ease both">{{ step.concl }}</div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <!-- FINAL -->
+  <sc-if value="{{ isFinal }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:50%;top:126px;translate:-50% 0;display:flex;gap:18px;align-items:center;background:rgba(20,13,6,.5);backdrop-filter:blur(8px);padding:12px 22px;border-radius:999px;white-space:nowrap;flex:none">
+      <sc-for list="{{ finalMedals }}" as="f" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:10px;color:#f7d690;font-weight:800;font-size:20px"><span style="width:44px;height:44px;border-radius:50%;background:#e0a43a;color:#2a1a08;display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:26px;box-shadow:0 0 18px rgba(224,164,58,.8)">✓</span>{{ f.name }}</div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ fin0 }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(20,13,6,.55) 0%,rgba(20,13,6,0) 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:0;right:0;top:330px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;pointer-events:none;animation:rise 1s ease both">
+        <div style="font-weight:900;font-size:28px;letter-spacing:.3em;color:#f7d690;text-transform:uppercase;white-space:nowrap">¡Misión cumplida!</div>
+        <div style="font-family:Alegreya,serif;font-weight:800;font-size:124px;line-height:1;color:#fff8ea;text-shadow:0 6px 40px rgba(0,0,0,.5)">¡Hay fiesta en la casa del Padre!</div>
+        <div style="font-family:Alegreya,serif;font-style:italic;font-size:44px;color:#fff1d2;text-shadow:0 2px 20px rgba(0,0,0,.6)">El hijo ha vuelto y su padre lo ha recibido con un abrazo.</div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ finPhrases }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:rgba(20,13,6,.45);pointer-events:none"></div>
+      <div style="position:absolute;left:50%;top:250px;translate:-50% 0;width:1500px;display:flex;flex-direction:column;gap:28px">
+        <sc-for list="{{ phrases }}" as="p" hint-placeholder-count="1">
+          <div style="display:flex;gap:32px;align-items:center;background:#f7efdf;border-radius:30px;padding:34px 48px;box-shadow:0 24px 60px rgba(0,0,0,.4);animation:rise .7s ease both">
+            <span style="flex:none;width:90px;height:90px;border-radius:50%;background:#e0a43a;color:#2a1a08;display:flex;align-items:center;justify-content:center;font-family:Alegreya,serif;font-weight:800;font-size:54px">{{ p.n }}</span>
+            <span style="font-family:Alegreya,serif;font-weight:800;font-size:58px;line-height:1.15;color:#2a2016">{{ p.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ finIdea }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,200,110,.35) 0%,rgba(20,13,6,.6) 75%);pointer-events:none;animation:fade 1s ease both"></div>
+      <div style="position:absolute;left:50%;top:50%;translate:-50% -50%;width:1560px;text-align:center;display:flex;flex-direction:column;gap:30px;align-items:center;animation:pop 1s ease both">
+        <div style="font-weight:900;font-size:28px;letter-spacing:.3em;color:#f7d690;text-transform:uppercase;white-space:nowrap">Nuestra idea fuerza</div>
+        <div style="font-family:Alegreya,serif;font-weight:800;font-size:96px;line-height:1.08;color:#fff8ea;text-transform:uppercase;text-shadow:0 6px 50px rgba(0,0,0,.5),0 0 80px rgba(255,200,110,.5);text-wrap:balance">Aunque yo me aleje, Dios Padre siempre me espera para abrazarme</div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ finOral }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:rgba(20,13,6,.5);pointer-events:none"></div>
+      <div style="position:absolute;left:50%;top:300px;translate:-50% 0;width:1440px;display:flex;flex-direction:column;align-items:center;gap:36px;text-align:center;animation:rise .7s ease both">
+        <div style="background:#e0a43a;color:#2a1a08;font-weight:900;font-size:26px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;padding:14px 30px;border-radius:999px;white-space:nowrap;flex:none">Conversemos</div>
+        <div style="font-family:Alegreya,serif;font-weight:800;font-size:82px;line-height:1.1;color:#fff8ea;text-shadow:0 4px 30px rgba(0,0,0,.5);text-wrap:balance">¿Cuál es la gran enseñanza que nos deja Jesús en esta historia?</div>
+        <div style="font-weight:800;font-size:30px;color:#f7d690">Levanten la mano y compartan lo que aprendieron.</div>
+        <button onClick="{{ goMap }}" style="margin-top:20px;background:#e0a43a;color:#2a1a08;font-weight:900;font-size:34px;letter-spacing:.06em;padding:28px 60px;border-radius:999px;white-space:nowrap;flex:none;box-shadow:0 10px 0 #a86f17,0 24px 50px rgba(0,0,0,.4)" style-hover="filter:brightness(1.08)" style-active="transform:translateY(6px)">VOLVER A VER NUESTRA AVENTURA</button>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <!-- BOTTOM NAV (stage + final) -->
+  <sc-if value="{{ showNav }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;right:72px;bottom:44px;display:flex;gap:20px;align-items:center">
+      <button onClick="{{ back }}" style="background:rgba(247,239,223,.92);color:#2a2016;font-weight:800;font-size:28px;padding:24px 40px;border-radius:999px;white-space:nowrap;flex:none;box-shadow:0 10px 30px rgba(0,0,0,.3)" style-hover="background:#fff8ea">← Atrás</button>
+      <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ next }}" style="background:{{ nextBg }};color:{{ nextColor }};font-weight:900;font-size:30px;padding:24px 48px;border-radius:999px;white-space:nowrap;flex:none;box-shadow:{{ nextShadow }};transition:all .3s ease;cursor:{{ nextCursor }}" style-active="transform:translateY(4px)">{{ nextLabel }}</button>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <!-- TOP BAR -->
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;top:0;height:104px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:{{ barBg }}">
+      <div style="font-family:Alegreya,serif;font-weight:800;font-size:32px;color:{{ barInk }};min-width:420px">La gran aventura</div>
+      <sc-if value="{{ showStageChip }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:20px;background:rgba(20,13,6,.6);backdrop-filter:blur(8px);padding:12px 28px;border-radius:999px;white-space:nowrap;flex:none">
+          <span style="font-weight:900;font-size:22px;letter-spacing:.14em;color:#f7d690;text-transform:uppercase;white-space:nowrap">{{ stageChip }}</span>
+          <span style="display:flex;gap:8px">
+            <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+              <span style="width:16px;height:16px;border-radius:50%;background:{{ d.bg }};box-shadow:0 0 0 2px {{ d.ring }}"></span>
+            </sc-for>
+          </span>
+        </div>
+      </sc-if>
+      <div style="display:flex;gap:12px;min-width:420px;justify-content:flex-end">
+        <sc-if value="{{ showMapBtn }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ goMap }}" style="background:rgba(20,13,6,.55);color:#fff8ea;font-weight:800;font-size:20px;padding:12px 22px;border-radius:999px;white-space:nowrap;flex:none;backdrop-filter:blur(6px)" style-hover="background:rgba(20,13,6,.8)">Mapa</button>
+        </sc-if>
+        <sc-if value="{{ showHelpBtn }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ toggleHelp }}" style="background:rgba(20,13,6,.55);color:#f7d690;font-weight:800;font-size:20px;padding:12px 22px;border-radius:999px;white-space:nowrap;flex:none;backdrop-filter:blur(6px)" style-hover="background:rgba(20,13,6,.8)">Ayuda para el profesor</button>
+        </sc-if>
+        <button onClick="{{ askRestart }}" style="background:rgba(20,13,6,.55);color:#fff8ea;font-weight:800;font-size:20px;padding:12px 22px;border-radius:999px;white-space:nowrap;flex:none;backdrop-filter:blur(6px)" style-hover="background:rgba(20,13,6,.8)">Reiniciar</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- TEACHER PANEL -->
+  <sc-if value="{{ help }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;right:24px;top:116px;bottom:24px;width:560px;background:rgba(30,22,14,.94);backdrop-filter:blur(10px);color:#f7efdf;border-radius:28px;padding:32px 34px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:20px;overflow:auto;animation:rise .35s ease both;z-index:40">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-weight:900;font-size:18px;letter-spacing:.2em;color:#e0a43a;text-transform:uppercase;white-space:nowrap">Ayuda para el profesor</div>
+        <button onClick="{{ toggleHelp }}" style="background:rgba(247,239,223,.12);color:#f7efdf;font-weight:800;font-size:18px;padding:8px 16px;border-radius:999px;white-space:nowrap;flex:none" style-hover="background:rgba(247,239,223,.22)">Cerrar ✕</button>
+      </div>
+      <div style="font-family:Alegreya,serif;font-weight:800;font-size:32px;color:#fff8ea">{{ H.title }}</div>
+      <sc-for list="{{ H.rows }}" as="r" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-weight:900;font-size:15px;letter-spacing:.18em;color:#c9a46a;text-transform:uppercase;white-space:nowrap">{{ r.k }}</div>
+          <div style="font-size:20px;line-height:1.45;color:#efe2c6">{{ r.v }}</div>
+        </div>
+      </sc-for>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:16px;border-top:1px solid rgba(247,239,223,.15)">
+        <div style="font-weight:900;font-size:15px;letter-spacing:.18em;color:#c9a46a;text-transform:uppercase;white-space:nowrap">Controles</div>
+        <sc-if value="{{ canRevealAll }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ revealAll }}" style="background:#e0a43a;color:#2a1a08;font-weight:800;font-size:18px;padding:12px 18px;border-radius:14px;text-align:left">Revelar todas las pistas de esta escena</button>
+        </sc-if>
+        <sc-if value="{{ showHintBtn }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ showHint }}" style="background:#e0a43a;color:#2a1a08;font-weight:800;font-size:18px;padding:12px 18px;border-radius:14px;text-align:left">Mostrar la pista de la pregunta</button>
+        </sc-if>
+        <button onClick="{{ replay }}" style="background:rgba(247,239,223,.12);color:#f7efdf;font-weight:800;font-size:18px;padding:12px 18px;border-radius:14px;text-align:left" style-hover="background:rgba(247,239,223,.22)">Repetir la animación de esta pantalla</button>
+        <div style="font-size:15px;color:#a8977c;line-height:1.4">Teclado: → avanzar · ← atrás · Esc cerrar panel</div>
+      </div>
+    </div>
+  </sc-if>
+
+  {{ burstEl }}
+
+  <!-- RESTART CONFIRM -->
+  <sc-if value="{{ confirm }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(10,7,4,.6);display:flex;align-items:center;justify-content:center;z-index:50;animation:fade .25s ease both">
+      <div style="width:820px;background:#f7efdf;border-radius:32px;padding:48px 56px;display:flex;flex-direction:column;gap:24px;box-shadow:0 40px 90px rgba(0,0,0,.5);animation:pop .4s ease both">
+        <div style="font-family:Alegreya,serif;font-weight:800;font-size:48px;color:#2a2016">¿Volver a empezar la aventura?</div>
+        <div style="font-size:26px;line-height:1.4;color:#5a4a38">Se borrará el progreso del mapa y volveremos a la portada.</div>
+        <div style="display:flex;gap:16px;justify-content:flex-end">
+          <button onClick="{{ cancelRestart }}" style="background:#efe2c6;color:#2a2016;font-weight:800;font-size:24px;padding:18px 32px;border-radius:999px;white-space:nowrap;flex:none">Cancelar</button>
+          <button onClick="{{ doRestart }}" style="background:#e0a43a;color:#2a1a08;font-weight:900;font-size:24px;padding:18px 32px;border-radius:999px;white-space:nowrap;flex:none">Sí, empezar de nuevo</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;celebrationEffects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Clase&quot;},&quot;showTeacherHelp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Clase&quot;},&quot;persistProgress&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Clase&quot;}}">
+const IMGS = ['eden','promesa','partida','cerdos','regreso','abrazo','fiesta'];
+const MOODS = {
+  bright:{f:'none',t:'rgba(0,0,0,0)',g:0},
+  broken:{f:'saturate(.45) brightness(.82)',t:'rgba(40,52,78,.38)',g:0},
+  soft:{f:'saturate(.7) brightness(.9)',t:'rgba(40,52,78,.18)',g:0},
+  gloom:{f:'saturate(.3) brightness(.7)',t:'rgba(30,35,55,.5)',g:0},
+  dawn:{f:'saturate(1.05)',t:'rgba(255,190,110,.10)',g:.8},
+  dusk:{f:'saturate(.8) brightness(.92)',t:'rgba(70,50,60,.2)',g:0},
+  reflect:{f:'saturate(.6) brightness(.8)',t:'rgba(35,30,60,.35)',g:0},
+  warm:{f:'saturate(1.05)',t:'rgba(255,180,90,.08)',g:.7},
+  glow:{f:'saturate(1.1) brightness(1.03)',t:'rgba(255,190,100,.12)',g:1}
+};
+const STAGES = [
+ {name:'El jardín del Edén', img:'eden', steps:[
+  {t:'narr',img:'eden',mood:'bright',kicker:'Etapa 1 · El jardín del Edén',text:'Dios creó al hombre y a la mujer para vivir en amistad con Él.',instr:'Miren el jardín: ¿qué cosas buenas creó Dios?'},
+  {t:'narr',img:'eden',mood:'broken',kicker:'Algo cambió en el jardín',text:'Pero Adán y Eva desobedecieron a Dios y cometieron el primer pecado. El pecado rompió su amistad con Dios y trajo desorden a sus relaciones.'},
+  {t:'hot',img:'eden',mood:'soft',instr:'Descubramos las tres pistas del jardín',spots:[
+    {x:9,y:74,title:'Entre los arbustos',text:'Adán y Eva sintieron miedo y se escondieron.'},
+    {x:30,y:24,title:'El árbol del jardín',text:'Su amistad con Dios quedó herida por el pecado.'},
+    {x:58,y:52,title:'Adán y Eva',text:'El pecado también introdujo desarmonía en las relaciones humanas.'}]},
+  {t:'quiz',img:'eden',mood:'soft',q:'¿Qué ocurrió cuando Adán y Eva desobedecieron a Dios?',opts:['Dios dejó de quererlos.','Se rompió su amistad con Dios y entró el pecado en el mundo.','No pasó nada importante.'],ok:1,hint:'Recuerda que Dios seguía amando a Adán y Eva, incluso después de su pecado.',win:'¡Muy bien! El pecado rompe nuestra amistad con Dios. Pero la historia no termina aquí: Dios no abandonó a sus hijos.'}
+ ], help:{obj:'Comprender que Dios creó al hombre para vivir en amistad con Él y que el pecado original rompió esa amistad, introduciendo desarmonía con Dios, con los demás y con uno mismo.',exp:'Dios no dejó de amar a Adán y Eva. El pecado original hirió la amistad con Dios y trajo desorden a nuestras relaciones; por eso necesitamos un Salvador.',ans:'Pregunta: B — Se rompió su amistad con Dios y entró el pecado en el mundo.',extra:'¿Cómo nos sentimos cuando se rompe una amistad? ¿Qué hacemos para arreglarla?'}},
+ {name:'La gran promesa', img:'promesa', steps:[
+  {t:'narr',img:'promesa',mood:'dawn',kicker:'Etapa 2 · La gran promesa',text:'Después del primer pecado, Dios no abandonó a los hombres. Prometió que el mal no tendría la última palabra y que enviaría un Salvador. Ese Salvador es Jesús.',quote:'Un hijo de la mujer vencerá al mal',ref:'Génesis 3,15'},
+  {t:'cards',img:'promesa',mood:'dawn',instr:'¿Qué tarjeta guarda la promesa de Dios?',cards:[
+    {text:'Dios se olvidaría de los hombres.',no:'Dios nunca se olvida de sus hijos.'},
+    {text:'Dios enviaría un Salvador.'},
+    {text:'Los hombres podrían salvarse solos.',no:'Nadie puede salvarse solo.'}],ok:1,win:'¡Has descubierto la gran promesa! Dios prometió un Salvador: Jesús.'},
+  {t:'quiz',img:'promesa',mood:'dawn',q:'¿Quién es el Salvador que Dios nos prometió?',opts:['Moisés.','Jesús.','Adán.'],ok:1,hint:'Es el Hijo de Dios, que nació en Belén.',win:'Jesús es el Hijo de Dios hecho hombre. Vino al mundo para salvarnos del pecado y devolvernos la amistad con Dios.',extra:'Dios quiso contar con María para que Jesús, nuestro Salvador, viniera al mundo.'}
+ ], help:{obj:'Descubrir que Dios no abandonó a la humanidad después del pecado, sino que prometió un Salvador: Jesucristo.',exp:'En Génesis 3,15 Dios anuncia que el linaje de la mujer vencerá a la serpiente: es el primer anuncio de la salvación. La Iglesia reconoce en esa mujer a María, Madre de Jesús.',ans:'Tarjeta: B — Dios enviaría un Salvador. Pregunta: B — Jesús.',extra:'¿Cómo nos sentimos cuando alguien cumple lo que nos prometió?'}},
+ {name:'Un país lejano', img:'partida', steps:[
+  {t:'narr',img:'partida',mood:'bright',kicker:'Etapa 3 · Un país lejano',text:'Jesús contó la historia de un hombre que tenía dos hijos. Un día, el hijo menor pidió su herencia y se marchó a un país lejano.',instr:'¿Hacia dónde va el hijo? ¿Qué deja atrás?'},
+  {t:'narr',img:'cerdos',mood:'dusk',kicker:'Lejos de casa',text:'Allí malgastó todo lo que tenía. Cuando se quedó sin nada, comenzó a pasar necesidad: tuvo que cuidar cerdos y pasaba hambre.'},
+  {t:'hot',img:'cerdos',mood:'dusk',panel:'left',instr:'Busquemos tres cosas que nos cuentan qué le pasó',spots:[
+    {x:18,y:84,title:'La bolsa de monedas',text:'Está vacía: el hijo malgastó toda su herencia.'},
+    {x:38,y:69,title:'El recipiente sin comida',text:'Tenía tanta hambre que deseaba comer lo que comían los cerdos.'},
+    {x:54,y:29,title:'El camino a lo lejos',text:'Su casa quedó muy lejos. Se había alejado de su padre.'}]},
+  {t:'quiz',img:'cerdos',mood:'dusk',q:'¿Qué nos enseña esta parte de la historia?',opts:['Que el hijo ya no podía volver a ser hijo de su padre.','Que el hijo se había alejado de su padre y necesitaba encontrar el camino de regreso.','Que el padre nunca había querido a su hijo.'],ok:1,hint:'Fíjense bien: aunque se fue muy lejos, ¿dejó de ser hijo de su padre?',win:'El hijo se alejó de su padre y tomó malas decisiones. Pero seguía siendo su hijo. La historia todavía no ha terminado.'},
+  {t:'oral',img:'partida',mood:'soft',kicker:'Conversemos',q:'¿Creéis que el padre seguía queriendo a su hijo, aunque se hubiera marchado?',instr:'Levanten la mano y compartan lo que piensan.'}
+ ], help:{obj:'Comprender la primera parte de la parábola (Lc 15,11-16): el hijo se aleja de su padre, malgasta su herencia y termina en necesidad.',exp:'El pecado promete felicidad lejos de Dios, pero nos deja vacíos. Aun así, el hijo no deja de ser hijo: nunca perdemos la dignidad de hijos de Dios.',ans:'Pregunta: B — El hijo se había alejado de su padre y necesitaba encontrar el camino de regreso.',extra:'¿Por qué creen que el hijo quiso irse? ¿Qué cosas nos alejan a nosotros de Dios?'}},
+ {name:'El camino de regreso', img:'regreso', steps:[
+  {t:'narr',img:'cerdos',mood:'reflect',kicker:'Etapa 4 · El camino de regreso',text:'Cuando el hijo se dio cuenta de lo mal que estaba, reconoció que había actuado mal. Entonces tomó una decisión: levantarse, volver a su padre y pedirle perdón.',quote:'Padre, pequé contra el cielo y ante ti',ref:'Lucas 15,18'},
+  {t:'paths',img:'cerdos',doneImg:'regreso',mood:'reflect',instr:'¿Qué camino debe tomar el hijo?',paths:[
+    {label:'Camino A',text:'Quedarse donde está y fingir que no ha pasado nada.',no:'Fingir no arregla nada: seguiría lejos de casa.'},
+    {label:'Camino B',text:'Culpar a otras personas.',no:'Culpar a otros no lo acerca a su padre.'},
+    {label:'Camino C',text:'Reconocer el error, arrepentirse y volver a su padre.'}],ok:2,win:'¡El hijo se levanta y emprende el camino de regreso a casa!'},
+  {t:'narr',img:'regreso',mood:'warm',kicker:'Para nuestra vida',text:'Cuando hacemos algo malo, no debemos escondernos de Dios ni fingir que no ha pasado nada. Podemos reconocer nuestro pecado, arrepentirnos y volver a Él.'},
+  {t:'narr',img:'regreso',mood:'warm',kicker:'El sacramento de la Confesión',text:'Jesús nos dejó el sacramento de la Confesión para que podamos recibir el perdón de nuestros pecados. En la Confesión:',chips:[{n:'1',t:'Reconocemos nuestros pecados'},{n:'2',t:'Nos arrepentimos'},{n:'3',t:'Recibimos la absolución del sacerdote'}]},
+  {t:'quiz',img:'regreso',mood:'warm',q:'Si reconocemos que hemos pecado, ¿qué debemos hacer?',opts:['Alejarnos todavía más de Dios.','Arrepentirnos y volver a Dios, acudiendo a la Confesión cuando corresponda.','Pensar que Dios ya no nos quiere.'],ok:1,hint:'Piensen en lo que hizo el hijo cuando se dio cuenta de su error.',win:'Dios quiere que volvamos a Él. Nunca debemos pensar que nuestros pecados hacen que deje de amarnos.'}
+ ], help:{obj:'Comprender que el hijo reconoce su error, se arrepiente y decide volver a su padre (Lc 15,17-20), y relacionarlo con el arrepentimiento y la Confesión.',exp:'El regreso empieza al «recapacitar»: reconocer el pecado, sentir dolor por él y decidir volver. En la Confesión el sacerdote, en nombre de Jesús, nos da la absolución.',ans:'Camino: C — Reconocer el error y volver. Pregunta: B — Arrepentirnos y volver a Dios.',extra:'¿Qué es lo más difícil de pedir perdón? ¿Cómo nos sentimos después?'}},
+ {name:'La casa del Padre', img:'abrazo', steps:[
+  {t:'narr',img:'abrazo',mood:'glow',kicker:'Etapa 5 · El abrazo del Padre',text:'Cuando el hijo todavía estaba lejos, su padre lo vio, se conmovió, corrió hacia él y lo abrazó. El hijo reconoció su pecado, pero el padre lo recibió con amor y organizó una fiesta.'},
+  {t:'narr',big:true,img:'abrazo',mood:'glow',kicker:'Palabras de Jesús',quote:'Este hijo mío estaba perdido y ha sido hallado',ref:'Lucas 15,24'},
+  {t:'quiz',img:'abrazo',mood:'glow',q:'¿Cómo recibió el padre a su hijo cuando volvió a casa?',opts:['Lo echó de casa.','Le dijo que ya no era su hijo.','Corrió a abrazarlo y celebró su regreso.'],ok:2,hint:'Recuerden: el padre lo vio desde lejos… ¿y qué hizo?',win:'El padre no había dejado de querer a su hijo. Se alegró porque había regresado. Jesús nos enseña así cuánto nos ama Dios y cómo se alegra cuando volvemos a Él.'},
+  {t:'oral',img:'abrazo',mood:'warm',kicker:'Para nuestra vida',situation:'Un niño ha hecho algo malo y piensa: «Dios ya no me quiere. Mejor no me acerco a Él».',q:'¿Qué le dirías a ese niño?',instr:'Primero respondan con sus propias palabras.',concl:'Dios sigue siendo nuestro Padre. Si nos alejamos de Él por el pecado, podemos arrepentirnos, acudir a la Confesión y volver a vivir en su amistad.'}
+ ], help:{obj:'Descubrir el corazón de la parábola (Lc 15,20-24): Dios es un Padre misericordioso que nos espera, sale a nuestro encuentro y se alegra cuando volvemos.',exp:'El padre ve al hijo «cuando todavía estaba lejos»: lo estaba esperando. No le reprocha; lo abraza, le devuelve su dignidad (vestido, anillo, sandalias) y hace fiesta. Así es Dios con nosotros.',ans:'Pregunta: C — Corrió a abrazarlo y celebró su regreso.',extra:'¿Qué creen que sintió el hijo cuando su padre lo abrazó?'}}
+];
+const FINAL_HELP = {obj:'Recoger las tres ideas principales de la clase y fijar la idea fuerza.',exp:'Sugerencia: lean juntos en voz alta cada frase y la idea fuerza. Pueden repetirla con un gesto de abrazo.',ans:'Gran enseñanza: Dios es un Padre misericordioso que siempre nos espera y se alegra cuando volvemos a Él.',extra:'¿Cuándo podemos volver nosotros a la casa del Padre?'};
+const PHRASES = ['El pecado rompe nuestra amistad con Dios.','Dios no nos abandonó: prometió un Salvador, Jesús.','Dios Padre siempre nos espera y se alegra cuando volvemos a Él.'];
+const POS = [[260,700],[620,430],[960,710],[1300,440],[1660,650]];
+const KEY = 'gran-aventura-v1';
+const fresh = () => ({found:[],wrong:[],solved:false,hint:false,reveal:false});
+
+class Component extends DCLogic {
+  stageRef = React.createRef();
+  state = Object.assign({screen:'cover',stage:0,step:0,completed:[false,false,false,false,false],finalStep:0,help:false,confirm:false,cv:true,dawnOn:false,scale:1,burst:null,lockedMsg:false,justDone:-1}, fresh(), this.load());
+
+  load() {
+    try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && Array.isArray(s.completed)) return {screen:s.screen||'cover',stage:s.stage||0,step:s.step||0,completed:s.completed,finalStep:s.finalStep||0}; } catch(e) {}
+    return {};
+  }
+  componentDidMount() {
+    this.onResize = () => this.setState({scale: Math.min(window.innerWidth/1920, window.innerHeight/1080)});
+    this.onResize(); window.addEventListener('resize', this.onResize);
+    this.onKey = (e) => {
+      if (e.key === 'Escape') this.setState({help:false,confirm:false});
+      if (e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
+      if (e.key === 'ArrowRight') { if (this.state.screen==='stage' || this.state.screen==='final') this.next(); }
+      if (e.key === 'ArrowLeft') { if (this.state.screen==='stage' || this.state.screen==='final') this.back(); }
+    };
+    window.addEventListener('keydown', this.onKey);
+    this.armDawn();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey); }
+  componentDidUpdate(pp, ps) {
+    const s = this.state;
+    if (this.props.persistProgress !== false && (ps.screen!==s.screen||ps.stage!==s.stage||ps.step!==s.step||ps.completed!==s.completed||ps.finalStep!==s.finalStep)) {
+      try { localStorage.setItem(KEY, JSON.stringify({screen:s.screen,stage:s.stage,step:s.step,completed:s.completed,finalStep:s.finalStep})); } catch(e) {}
+    }
+    if (ps.screen!==s.screen||ps.stage!==s.stage||ps.step!==s.step) this.armDawn();
+  }
+  armDawn() {
+    clearTimeout(this.dawnT);
+    const st = this.curStep();
+    if (st && st.mood === 'dawn' && this.state.step === 0) { this.setState({dawnOn:false}); this.dawnT = setTimeout(() => this.setState({dawnOn:true}), 500); }
+    else if (!this.state.dawnOn) this.setState({dawnOn:true});
+  }
+  curStep() { return this.state.screen==='stage' ? STAGES[this.state.stage].steps[this.state.step] : null; }
+  flash(extra) {
+    this.setState(Object.assign({cv:false}, extra||{}));
+    clearTimeout(this.cvT); this.cvT = setTimeout(() => this.setState({cv:true}), 60);
+  }
+  goStep(i) { this.flash(Object.assign({step:i}, fresh())); }
+  burst(e) {
+    if (this.props.celebrationEffects === false || !this.stageRef.current || !e) return;
+    const r = this.stageRef.current.getBoundingClientRect(), sc = this.state.scale || 1;
+    this.setState({burst:{k:Date.now(), x:(e.clientX-r.left)/sc, y:(e.clientY-r.top)/sc}});
+    clearTimeout(this.bT); this.bT = setTimeout(() => this.setState({burst:null}), 1300);
+  }
+  canNext() {
+    const s = this.state;
+    if (s.screen === 'final') return true;
+    const st = this.curStep(); if (!st) return false;
+    if (st.t === 'hot') return s.found.length >= 3;
+    if (st.t === 'cards' || st.t === 'paths' || st.t === 'quiz') return s.solved;
+    if (st.t === 'oral') return !st.concl || s.reveal;
+    return true;
+  }
+  next() {
+    const s = this.state;
+    if (s.screen === 'final') { if (s.finalStep < 5) this.setState({finalStep:s.finalStep+1}); else this.goMap(); return; }
+    if (!this.canNext()) return;
+    const steps = STAGES[s.stage].steps;
+    if (s.step < steps.length - 1) return this.goStep(s.step + 1);
+    const completed = s.completed.slice(); completed[s.stage] = true;
+    if (s.stage === 4) this.setState(Object.assign({completed, screen:'final', finalStep:0, help:false}, fresh()));
+    else this.setState(Object.assign({completed, screen:'map', help:false, justDone:s.stage}, fresh()));
+  }
+  back() {
+    const s = this.state;
+    if (s.screen === 'final') { if (s.finalStep > 0) this.setState({finalStep:s.finalStep-1}); else this.goMap(); return; }
+    if (s.step > 0) this.goStep(s.step - 1); else this.goMap();
+  }
+  goMap() { this.setState(Object.assign({screen:'map', help:false, lockedMsg:false}, fresh())); }
+  enterStage(i) {
+    const c = this.state.completed;
+    if (i > 0 && !c[i-1]) { this.setState({lockedMsg:true}); clearTimeout(this.lT); this.lT = setTimeout(() => this.setState({lockedMsg:false}), 2200); return; }
+    this.flash(Object.assign({screen:'stage', stage:i, step:0, justDone:-1, lockedMsg:false}, fresh()));
+  }
+
+  renderVals() {
+    const res = window.__resources || {}, R = {};
+    IMGS.forEach(k => { R[k] = res['img-' + k] || ('assets/' + k + '.jpg'); });
+    const s = this.state, st = this.curStep();
+    const scr = s.screen;
+    let img = null, moodKey = 'bright';
+    if (scr === 'cover') img = 'regreso';
+    else if (scr === 'intro') { img = 'partida'; moodKey = 'soft'; }
+    else if (scr === 'final') { img = 'fiesta'; moodKey = 'glow'; }
+    else if (st) {
+      img = (st.t === 'paths' && s.solved) ? st.doneImg : st.img;
+      moodKey = (st.t === 'paths' && s.solved) ? 'warm' : st.mood;
+      if (moodKey === 'dawn' && !s.dawnOn) moodKey = 'gloom';
+    }
+    const M = MOODS[moodKey] || MOODS.bright;
+    const L = {};
+    IMGS.forEach(k => { const on = k === img; L[k] = {op: on ? 1 : 0, pe: on ? 'auto' : 'none', sc: on ? 1.06 : 1}; });
+
+    const cv = s.cv && scr === 'stage' && st;
+    const t = st ? st.t : '';
+    const isNarr = !!(cv && t === 'narr' && !st.big);
+    const isBig = !!(cv && t === 'narr' && st.big);
+
+    const spots = (st && st.spots || []).map((p, i) => {
+      const f = s.found.includes(i), justF = s.found[s.found.length-1] === i;
+      return { n: i+1, x: p.x, y: p.y, title: p.title, open: !f, found: f,
+        on: (e) => { if (!f) { this.setState(p => ({found: p.found.includes(i) ? p.found : p.found.concat(i)})); this.burst(e); } },
+        cardBg: f ? 'rgba(250,243,228,.97)' : 'rgba(20,13,6,.5)', cardBd: f ? 'transparent' : 'rgba(255,248,234,.35)',
+        cardAnim: justF ? 'pop .6s ease both' : 'none', numBg: f ? '#e0a43a' : 'rgba(255,248,234,.25)',
+        titleColor: f ? '#8a5a12' : 'rgba(255,248,234,.75)', textColor: f ? '#2a2016' : 'rgba(255,248,234,.6)',
+        cardTitle: f ? p.title : 'Pista ' + (i+1), cardText: f ? p.text : 'Por descubrir…' };
+    });
+
+    const choose = (i, e) => {
+      if (s.solved) return;
+      if (i === st.ok) { this.setState({solved:true}); this.burst(e); }
+      else this.setState(p => ({wrong: p.wrong.includes(i) ? p.wrong : p.wrong.concat(i)}));
+    };
+    const cards = (st && st.cards || []).map((c, i) => {
+      const ok = s.solved && i === st.ok, w = s.wrong.includes(i);
+      return { l: 'ABC'[i], text: c.text, note: w ? c.no : '', on: (e) => choose(i, e),
+        bg: ok ? '#fff6dc' : '#f7efdf', op: (s.solved && !ok) ? .45 : (w ? .7 : 1), sc: ok ? 1.06 : 1,
+        shadow: ok ? '0 0 0 6px #e0a43a,0 0 90px rgba(255,206,120,.9)' : '0 24px 50px rgba(0,0,0,.4)',
+        sealBg: ok ? '#e0a43a' : (w ? '#a8977c' : '#8a3b2a') };
+    });
+    const paths = (st && st.paths || []).map((p, i) => {
+      const w = s.wrong.includes(i);
+      return { label: p.label, text: p.text, note: w ? p.no : '', on: (e) => choose(i, e), op: w ? .75 : 1, top: w ? '#c9b48e' : '#6f8f5a' };
+    });
+    const opts = (st && st.opts || []).map((o, i) => {
+      const ok = s.solved && i === st.ok, w = s.wrong.includes(i), dim = s.solved && !ok;
+      return { l: 'ABC'[i], text: o, on: (e) => choose(i, e),
+        bg: ok ? '#e3efd9' : (w ? '#efe6d4' : '#fff8ea'), bd: ok ? '#4f8a5b' : (w ? '#d9c39a' : '#e6d6b3'),
+        op: dim ? .45 : (w ? .7 : 1), sc: ok ? 1.02 : 1, shadow: ok ? '0 0 40px rgba(79,138,91,.45)' : 'none',
+        lBg: ok ? '#4f8a5b' : (w ? '#d9c39a' : '#2a2016'), lColor: ok || !w ? '#fff8ea' : '#5a4a38',
+        tag: ok ? '¡Correcta!' : (w ? 'Pensemos otra vez' : ''), tagColor: ok ? '#fff8ea' : '#6b4410', tagBg: ok ? '#4f8a5b' : '#fbecc8' };
+    });
+
+    const done = s.completed, cur = done.findIndex(x => !x), curIdx = cur === -1 ? 5 : cur;
+    const medals = STAGES.map((g, i) => {
+      const c = done[i], isCur = i === curIdx, locked = i > curIdx;
+      return { left: POS[i][0]-120, top: POS[i][1]-120, name: g.name, img: g.img, src: R[g.img], isCurrent: isCur,
+        on: () => this.enterStage(i),
+        ring: c ? '#e0a43a' : (isCur ? '#fff8ea' : '#b9a27a'),
+        anim: (isCur || s.justDone === i) ? 'halo 2.4s ease-in-out infinite' : 'none',
+        filter: locked ? 'grayscale(1) brightness(.85)' : 'none', veil: locked ? 'rgba(70,52,30,.5)' : 'transparent',
+        badge: c ? '✓' : String(i+1), badgeBg: c ? '#e0a43a' : (locked ? '#b9a27a' : '#2a2016'), badgeColor: c ? '#2a1a08' : '#fff8ea',
+        status: c ? 'Completada' : (isCur ? 'Siguiente parada' : 'Cerrada'), statusColor: c ? '#4f8a5b' : (isCur ? '#8a5a12' : '#8f7c5e') };
+    });
+
+    const H0 = scr === 'final' ? FINAL_HELP : STAGES[s.stage].help;
+    const H = { title: scr === 'final' ? 'Celebración final' : 'Etapa ' + (s.stage+1) + ' · ' + STAGES[s.stage].name,
+      rows: [{k:'Objetivo pedagógico',v:H0.obj},{k:'Explicación catequética',v:H0.exp},{k:'Respuesta correcta',v:H0.ans},{k:'Para conversar',v:H0.extra}] };
+
+    const can = this.canNext(), lastStep = st && s.step === STAGES[s.stage].steps.length - 1;
+    const waitLabel = {hot:'Descubran las pistas', cards:'Encuentren la promesa', paths:'Elijan un camino', quiz:'Respondan el desafío', oral:'Conversen primero'}[t] || 'Continuar';
+    let nextLabel = can ? (lastStep ? (s.stage === 4 ? '¡A la celebración! →' : 'Completar etapa ✓') : 'Continuar →') : waitLabel;
+    if (scr === 'final') nextLabel = 'Siguiente →';
+
+    let burstEl = null;
+    if (s.burst) {
+      const parts = [];
+      for (let i = 0; i < 26; i++) {
+        const a = (i / 26) * Math.PI * 2 + (s.burst.k % 7) * .1, d = 110 + ((i * 37 + s.burst.k) % 90);
+        parts.push(React.createElement('span', {key:i, style:{position:'absolute',left:-7,top:-7,width:i%3?12:16,height:i%3?12:16,background:i%2?'#f3c56b':'#fff1c4',borderRadius:i%4===0?'50%':2,boxShadow:'0 0 12px rgba(255,210,130,.9)','--dx':Math.cos(a)*d+'px','--dy':Math.sin(a)*d+'px',animation:'burst 1.1s ease-out forwards'}}));
+      }
+      burstEl = React.createElement('div', {key:s.burst.k, style:{position:'absolute',left:s.burst.x,top:s.burst.y,pointerEvents:'none',zIndex:60}}, parts);
+    }
+
+    const fs = s.finalStep;
+    return {
+      stageRef: this.stageRef, R, scale: s.scale, L, imgFilter: M.f, tint: M.t, glowOp: M.g,
+      isCover: scr === 'cover', isIntro: scr === 'intro', isMap: scr === 'map', isFinal: scr === 'final',
+      hasProgress: done.some(Boolean),
+      startAdventure: () => this.setState({screen:'intro'}), goMap: () => this.goMap(),
+      mapTitle: curIdx === 5 ? '¡Llegamos a la casa del Padre!' : (curIdx === 0 ? 'Comienza el viaje' : 'Etapa ' + (curIdx+1) + ' de 5'),
+      mapHint: curIdx === 5 ? 'Todas las etapas están completas. Podemos volver a visitar cualquier lugar.' : 'Completen el desafío de cada lugar para abrir el siguiente.',
+      pathOffset: 100 - Math.min(curIdx, 4) * 25, medals, lockedMsg: s.lockedMsg,
+      mapGo: () => curIdx === 5 ? this.setState({screen:'final', finalStep:0}) : this.enterStage(curIdx),
+      mapGoLabel: curIdx === 5 ? 'Ir a la celebración →' : 'Ir a la etapa ' + (curIdx+1) + ' →',
+      step: st || {}, isNarr, isBig, isHot: !!(cv && t === 'hot'), isCards: !!(cv && t === 'cards'), isPaths: !!(cv && t === 'paths'),
+      isQuiz: !!(cv && t === 'quiz'), isOral: !!(cv && t === 'oral'),
+      spots, foundCount: s.found.length, panelL: st && st.panel === 'left' ? '72px' : 'auto', panelR: st && st.panel === 'left' ? 'auto' : '72px', panelT: st && st.panel === 'left' ? '220px' : '130px', panelW: st && st.panel === 'left' ? '520px' : '560px', panelGap: st && st.panel === 'left' ? '14px' : '20px', cards, paths, opts, solved: s.solved, pathsOpen: !s.solved,
+      quizKicker: 'Desafío de la etapa ' + (s.stage+1),
+      showHintBtn: t === 'quiz' && !s.solved && !s.hint && s.wrong.length === 0 && scr === 'stage',
+      showHintBox: !s.solved && (s.hint || s.wrong.length > 0),
+      showHint: () => this.setState({hint:true}),
+      reveal: s.reveal, showRevealBtn: !!(st && st.concl && !s.reveal), doReveal: () => this.setState({reveal:true}),
+      replay: () => this.flash({}),
+      fin0: fs === 0, finPhrases: fs >= 1 && fs <= 3, finIdea: fs === 4, finOral: fs === 5,
+      phrases: PHRASES.slice(0, Math.min(fs, 3)).map((p, i) => ({n: i+1, t: p})),
+      finalMedals: STAGES.map(g => ({name: g.name})),
+      showNav: scr === 'stage' || (scr === 'final' && fs < 5), showNext: true, back: () => this.back(), next: () => this.next(), nextLabel,
+      nextBg: can ? '#e0a43a' : 'rgba(247,239,223,.35)', nextColor: can ? '#2a1a08' : 'rgba(255,248,234,.9)',
+      nextShadow: can ? '0 10px 0 #a86f17,0 20px 40px rgba(0,0,0,.35)' : 'none', nextCursor: can ? 'pointer' : 'default',
+      showBar: scr === 'stage' || scr === 'map' || scr === 'final',
+      barBg: scr === 'map' ? 'transparent' : 'linear-gradient(180deg,rgba(18,12,6,.55),rgba(18,12,6,0))',
+      barInk: scr === 'map' ? '#2a2016' : '#fff8ea',
+      showStageChip: scr === 'stage', stageChip: 'Etapa ' + (s.stage+1) + ' de 5 · ' + STAGES[s.stage].name,
+      dots: STAGES.map((g, i) => ({bg: done[i] ? '#e0a43a' : (i === s.stage ? '#fff8ea' : 'rgba(255,248,234,.2)'), ring: i === s.stage ? '#e0a43a' : 'transparent'})),
+      showMapBtn: scr !== 'map', showHelpBtn: (scr === 'stage' || scr === 'final') && this.props.showTeacherHelp !== false,
+      help: s.help && (scr === 'stage' || scr === 'final'), toggleHelp: () => this.setState({help: !s.help}), H,
+      canRevealAll: t === 'hot' && s.found.length < 3 && scr === 'stage',
+      revealAll: () => this.setState({found:[0,1,2]}),
+      burstEl,
+      confirm: s.confirm, askRestart: () => this.setState({confirm:true}), cancelRestart: () => this.setState({confirm:false}),
+      doRestart: () => { try { localStorage.removeItem(KEY); } catch(e) {} this.setState(Object.assign({screen:'cover',stage:0,step:0,completed:[false,false,false,false,false],finalStep:0,help:false,confirm:false,justDone:-1}, fresh())); }
+    };
+  }
+}
+</script>
+</body>
+</html>
